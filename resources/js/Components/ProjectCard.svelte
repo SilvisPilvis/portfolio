@@ -37,10 +37,10 @@
   <p class="text-red text-xl">{error}</p>
 {:else}
     <div class="flex flex-row bg-sky-800 min-w-16 max-w-[35%] min-h-80 rounded-md">
-        <div class="flex flex-row justify-center items-end gap-2">
+        <div class="flex flex-row justify-center items-end gap-2 bg-secondary rounded-md">
             <img src="{data.owner.avatar_url}" alt="" class="w-20 h-20 rounded-md">
-            <p>{data.owner.login}</p>
-            <a href="{data.html_url}">{data.name}</a>
+            <p class="text-text">{data.owner.login}</p>
+            <a class="text-text" href="{data.html_url}">{data.name}</a>
         </div>
     </div>
     <!-- <div class="skeleton flex flex-row">
