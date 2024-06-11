@@ -13,6 +13,7 @@ export default {
       primary: '#69dffc',
       secondary: '#a9032f',
       accent: '#fbb325',
+      red:"#ff0000",
      },
   },
   plugins: [],
