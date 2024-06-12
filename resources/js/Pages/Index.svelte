@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     import axios from "axios";
     import ProjectCard from "../Components/ProjectCard.svelte";
+    import CollapsableThingy from "../Components/CollapsableThingy.svelte";
     import me from "../assets/es.png"
 
     const apiKey = import.meta.env.VITE_GITHUB_API_KEY;
@@ -74,6 +75,8 @@
 
 </script>
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
+
 <main class="bg-background">
 
     <article class="sky-bg min-w-screen min-h-screen flex justify-center items-center ">
@@ -107,6 +110,9 @@
 
     <article class="animated h-screen">
         <h1 class="text-8xl font-bold text-text">Education & Certificates:</h1>
+        <div class="flex flex-col items-center">
+            <CollapsableThingy title="Ulbrokas middleschool"/>
+        </div>
     </article>
 
     <article class="animated h-screen">
@@ -144,6 +150,7 @@
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    
 
     *{
         font-family: "Poppins", sans-serif;
@@ -237,7 +244,7 @@
         .animated{
             opacity: 0;
             /* transition: all 1s; */
-            transition: all 0.4s ease;
+            transition: all 0.5s ease;
         }
 
         .animate-fade-in {
