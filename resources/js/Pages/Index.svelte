@@ -3,6 +3,8 @@
     import axios from "axios";
     import ProjectCard from "../Components/ProjectCard.svelte";
     import CollapsableThingy from "../Components/CollapsableThingy.svelte";
+    import Review from "../Components/Review.svelte";
+    import ContactForm from "../Components/ContactForm.svelte";
     import me from "../assets/es.png"
 
     const apiKey = import.meta.env.VITE_GITHUB_API_KEY;
@@ -50,6 +52,8 @@
         
     })
 
+
+    // projects section
     // let repos = null;
     // let loading = true;
     // let error = null;
@@ -81,21 +85,20 @@
 
     <article class="sky-bg min-w-screen min-h-screen flex justify-center items-center ">
         <p class="title-animation-trigger flex absolute top-[10%]" hidden></p>
-        <!-- <div class="absolute -top-20 -left-20 h-40 w-[calc(100%+8rem)] bg-gradient-to-b from-transparent via-white to-white dark:via-zinc-900 dark:to-zinc-900"></div> -->
-        <!-- <p class="text-8xl font-bold w-fit uppercase fancy-text text-text animated t1" data-text="Welcome to my portfolio">Welcome to my portfolio</p> -->
-        <p class="text-[7rem] font-bold w-[50%] uppercase fancy-text text-text animated t1 text-outline">Welcome to my portfolio</p>
-        <!-- <p class="text-8xl font-bold w-fit uppercase fancy-bg">Welcome to my portfolio</p> -->
+        <!-- <p class="sm:text-8xl text-5xl font-bold w-min sm:w-[50%] uppercase fancy-text text-text animated t1 text-outline pointer-events-none">Welcome to my portfolio</p> -->
+        <p class="sm:text-8xl text-5xl font-bold w-min uppercase fancy-text text-text animated t1 text-outline pointer-events-none">Silvestrs Lignickis</p>
+
     </article>
 
     <article class="animated h-screen flex justify-center flex-col">
-        <p class="text-8xl font-bold text-text uppercase mb-12 ml-8 h-min">About Me:</p>
-        <div class="flex flex-row justify-center items-center gap-12">
+        <p class="sm:text-8xl text-6xl font-bold text-text mb-12 ml-8 h-min">About Me:</p>
+        <div class="flex sm:flex-row flex-col justify-center items-center gap-12">
             <img src={me} alt="" srcset="" class="w-1/3 max-h-max rounded-lg">
             <div class="flex justify-center flex-col">
-                <p class="text-text text-outline font-bold uppercase text-[5rem] h-[0.75em]">Visionary</p>
-                <p class="text-text text-outline font-bold uppercase text-[5rem] ml-[3.8rem] h-[0.75em]">Entrepreneur</p>
-                <p class="text-text text-outline font-bold uppercase text-[5rem] ml-[6.6rem] h-[0.75em]">Backend -</p>
-                <p class="text-text text-outline font-bold uppercase text-[5rem] ml-[9.7rem] h-[0.75em]">Enthusiast</p>
+                <p class="text-text text-outline font-bold uppercase sm:text-8xl text-5xl h-[0.75em]">Visionary</p>
+                <p class="text-text text-outline font-bold uppercase sm:text-8xl text-5xl sm:ml-[3.8rem] h-[0.75em]">Entrepreneur</p>
+                <p class="text-text text-outline font-bold uppercase sm:text-8xl text-5xl sm:ml-[6.6rem] h-[0.75em]">Backend -</p>
+                <p class="text-text text-outline font-bold uppercase sm:text-8xl text-5xl sm:ml-[9.7rem] h-[0.75em]">Enthusiast</p>
             </div>
         </div>
     </article>
@@ -109,22 +112,34 @@
     </article> -->
 
     <article class="animated h-screen">
-        <h1 class="text-8xl font-bold text-text">Education & Certificates:</h1>
+        <p class="sm:text-8xl text-5xl font-bold text-text mb-12 ml-8">Education & Certificates:</p>
         <div class="flex flex-col items-center">
-            <CollapsableThingy title="Ulbrokas middleschool"/>
+            <CollapsableThingy title="Ulbrokas middleschool" content="Primary Education - 2012-2021"/>
+            <CollapsableThingy title="Datorium Certificate" content="Certificate from Datorium programming courses."/>
+            <CollapsableThingy title="Latvia Cyber Security Challenge" content="Certificate from Latvia Cyber Security Challenge."/>
         </div>
     </article>
 
     <article class="animated h-screen">
-        <h1 class="text-8xl font-bold text-text">Work Experience:</h1>
+        <p class="sm:text-8xl text-5xl font-bold text-text mb-12 ml-8">My Work Experience @:</p>
+        <div class="flex flex-col items-center">
+            <CollapsableThingy title="SIA EMJ Metāls" content="My job included managing the incoming and outgoing warehouse orders." />
+            <CollapsableThingy title="B/N Kurši" content="My responsibilities were restocking the shelves." />
+            <CollapsableThingy title="Ulbrokas Middleschool" content="Just cleaning in general. And various other stuff." />
+        </div>
+
     </article>
 
     <article class="animated h-screen">
-        <h1 class="text-8xl font-bold text-text">Reviews:</h1>
+        <p class="sm:text-8xl text-5xl mb-12 ml-8 font-bold text-text">Reviews:</p>
+        <!-- <Review review="I am a great person"/> -->
     </article>
 
     <footer class="animate-fade-in h-screen">
-        <h1 class="text-8xl font-bold text-text">Contact Info:</h1>
+        <p class="sm:text-8xl text-6xl font-bold text-text mb-12 ml-8">Contact Info:</p>
+        <div class="grid place-items-center mt-28">
+            <ContactForm/>
+        </div>
     </footer>
 
     <!-- <div>
@@ -160,19 +175,15 @@
         /* text-wrap: wrap; */
     }
 
-    .fancy-text {
-        /* position: relative; */
-        position: fixed;
-        /* color: "#e0fafe"; */
-        max-width: fit-content;
-        /* text-wrap: none; */
-        z-index: 1;
-        /* text-wrap: nowrap; */
+    article {
+        width: 99vw;
+    }
 
-        /* -webkit-text-stroke-color: transparent;
-        -webkit-text-fill-color: transparent;
-        -webkit-background-clip: text;
-        background-clip: text; */
+    .fancy-text {
+        position: fixed;
+        max-width: fit-content;
+        z-index: 1;
+
     }
 
     .text-outline {
@@ -240,10 +251,17 @@
         background-size: cover;
     }
 
+    @keyframes scroll-anim {
+        to {
+            opacity: 1;
+        }
+    }
+
     @media (prefers-reduced-motion: no-preference) {
         .animated{
+            /* animation: scroll-anim 0.5s ease-in-out;
+            animation-timeline: scroll(); */
             opacity: 0;
-            /* transition: all 1s; */
             transition: all 0.5s ease;
         }
 
