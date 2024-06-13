@@ -5,7 +5,9 @@ use Inertia\Inertia;
 use App\Http\Controllers\MailController;
 
 Route::get('/', function () {
-    return Inertia::render('Index', []);
+    return Inertia::render('Index', [
+        'csrf_token' => csrf_token(),
+    ]);
 });
 
-Route::get('/send', [MailController::class, 'send']);
+Route::post('/send', [MailController::class, 'send']);

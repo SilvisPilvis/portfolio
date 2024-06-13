@@ -1,6 +1,33 @@
-<form action="#" method="post" class="gap-4 items-start w-full grid place-items-center">
-    <input type="text" class="cursor-text text-text sm:text-6xl text-2xl">
-    <textarea name="" id="" class="cursor-text text-text sm:text-6xl text-2xl"></textarea>
+<script>
+    import { page } from "@inertiajs/svelte";
+    // console.log($page.props);
+// import axios from "axios";
+// let content;
+
+// const sendEmail = async () => {
+//   try {
+//     const response = await axios.get("/send", {
+//         data: {
+//             content: content,
+//         }
+//     });
+//   } catch (error) {
+//     // Handle error
+//     console.error(error);
+//   }
+// };
+</script>
+<form action="/send" method="post" class="gap-4 items-start w-full grid place-items-center">
+    <!-- @csrf -->
+    <input type="hidden" name="_token" bind:value={$page.props.csrf_token}>
+    <label class="flex flex-col text-text sm:text-2xl text-2xl font-bold">
+        Your Email:
+        <input name="sender" type="text" class="cursor-text text-text sm:text-2xl text-2xl">
+    </label>
+     <label class="flex flex-col text-text sm:text-2xl text-2xl font-bold">
+         Write a message for me:
+         <textarea name="content" id="" class="cursor-text text-text sm:text-2xl text-2xl"></textarea>
+     </label>
     <button class="text-text text-3xl font-bold cursor-pointer">Contact Me</button>
 </form>
 

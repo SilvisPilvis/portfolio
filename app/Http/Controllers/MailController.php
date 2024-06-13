@@ -12,17 +12,27 @@ class MailController extends Controller
 {
     
     function send(Request $request){
-        $request->validate([
-            'content' => 'required|min:10|string',
-            // 'sender' => 'required|email|string',
-        ]);
+        // $request->validate([
+        //     'content' => 'required|min:10|string',
+        //     'sender' => 'required|email|string',
+        // ]);
+        // dd($request->content);
+        // $sender = "silvestrsl47@gmail.com";
+        $sender = $request->sender;
         $content = $request->content;
+        // echo $content;
+        // return $content;
         // $request->sender;
         // Mail::send('welcome', [], function($message) {
         //     $message->to('silvestrsl47@gmail.com', 'To Name')->subject('Test Mail');
         // });
         // $content = "This is a test message.";
-        $sender = "silvestrsl47@gmail.com";
-        Mail::to('silvestrsl47@gmail.com')->send(new ContactMe($content, $sender));
+        if(Mail::to('silvestrsl47@gmail.com')->send(new ContactMe($content, $sender))) {
+            // return json_encode(["success" => true]);
+            return redirect('/');
+        }
+        
+        // sleep(1);
+        // return json_encode(["success" => true]);
     }
 }

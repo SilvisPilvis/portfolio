@@ -42,10 +42,11 @@ function toggleBool(){
   <p id={"thing" + id} class="text-4xl font-normal collapse-anim">{content}</p>
   <hr class="my-8"> -->
   {#if !collapsed}
-  <p id={"thing" + id} class="text-4xl font-normal collapse-anim">{content}</p>
-  <hr class="my-8">
+  <p id={"thing" + id} class="text-4xl font-normal collapse-anim mb-4">{content}</p>
+  <!-- <p id={"thing" + id} class="text-4xl font-normal collapse-anim">{content}</p> -->
+  <!-- <hr class="my-8"> -->
   {:else}
-  <hr class="my-8">
+  <!-- <hr class="my-8"> -->
   {/if}
 </div>
 
@@ -63,7 +64,7 @@ function toggleBool(){
 
  img{
   transform: rotateX(0deg);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.7s ease-in-out;
   fill: #e0fafe;
   stroke: #e0fafe;
   color: #e0fafe;
