@@ -127,7 +127,15 @@
             <CollapsableThingy title="B/N Kurši" content="My responsibilities were restocking the shelves." />
             <CollapsableThingy title="Ulbrokas Middleschool" content="Just cleaning in general. And various other stuff." />
         </div>
+    </article>
 
+    <article class="animated h-screen">
+        <p class="sm:text-8xl text-5xl font-bold text-text mb-12 ml-8">My projects:</p>
+        <div class="flex flex-col items-center">
+            <CollapsableThingy title="TicketTrade" content="My Biggest project to date. The technologies used are PHP, Laravel, Tailwind, MySQL, GoLang" />
+            <CollapsableThingy title="Memquest" content="A web based memory game. The technologies used are PHP, Laravel, Tailwind, MySQL, Vue, Inertia, JavaScript" />
+            <CollapsableThingy title="Goquic" content="A small 2D multiplayer game. The technologies used are Go QUIC, Protobuf, Raylib" />
+        </div>
     </article>
 
     <article class="animated h-screen">

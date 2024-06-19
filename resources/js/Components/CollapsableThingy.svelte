@@ -64,7 +64,7 @@ function toggleBool(){
 
  img{
   transform: rotateX(0deg);
-  transition: all 0.7s ease-in-out;
+  transition: all 0.1s ease-in-out;
   fill: #e0fafe;
   stroke: #e0fafe;
   color: #e0fafe;
