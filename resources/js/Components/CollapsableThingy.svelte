@@ -2,8 +2,10 @@
   import { onMount } from "svelte";
   export let title;
   export let content;
+  export let images = [];
+  export let project = false;
   let collapsed = true;
-  import arrowUp from "../assets/arrow-up.svg";
+  import arrowUp from "../assets/arrow-up.png";
 
   const generateRandomString = (length=6)=>Math.random().toString(20).substr(2, length)
   const id = generateRandomString(6)
@@ -33,22 +35,42 @@ function toggleBool(){
 }
 </script>
 
-<div class="sm:text-6xl text-2xl font-bold text-text w-[90%]">
-  <div class="flex flex-row justify-between items-center min-h-[1.5rem] max-h-[5rem]">
-    <p class="mb-4">{title}</p>
-    <img src={arrowUp} alt="" srcset="" id={"arrow" + id} on:click={toggleBool} class="mb-4 sm:mb-0 invert-rot sm:w-40 sm:h-40 w-12 h-12" type="button">
+{#if project}
+  <div class="sm:text-4xl text-2xl text-text w-[90%] mb-40 mt-10 font-semibold"> <!-- mb-2 -->
+    <div class="flex flex-row justify-between items-center min-h-[1.5rem] max-h-[5rem]">
+      <p class="mb-4">{title}</p>
+      <img src={arrowUp} alt="" srcset="" id={"arrow" + id} on:click={toggleBool} class="mb-4 sm:mb-0 invert-rot p-8" type="button">
+    </div>
+    {#if !collapsed}
+    <p id={"thing" + id} class="text-4xl font-normal collapse-anim mt-4 mb-2">{content}</p>
+    <!-- add pretty images -->
+    {#each images as image}
+    <img src={image} alt="" class="rounded-lg">
+    {/each}
+
+    {:else}
+    <!-- <hr class="my-8"> -->
+    {/if}
   </div>
-  <!-- <hr class="my-8">
-  <p id={"thing" + id} class="text-4xl font-normal collapse-anim">{content}</p>
-  <hr class="my-8"> -->
-  {#if !collapsed}
-  <p id={"thing" + id} class="text-4xl font-normal collapse-anim mb-4">{content}</p>
-  <!-- <p id={"thing" + id} class="text-4xl font-normal collapse-anim">{content}</p> -->
-  <!-- <hr class="my-8"> -->
-  {:else}
-  <!-- <hr class="my-8"> -->
-  {/if}
-</div>
+{:else}
+  <div class="sm:text-4xl text-2xl text-text w-[90%] mb-2 mt-10 font-semibold"> <!-- mb-2 -->
+    <div class="flex flex-row justify-between items-center min-h-[1.5rem] max-h-[5rem]">
+      <p class="mb-4">{title}</p>
+      <img src={arrowUp} alt="" srcset="" id={"arrow" + id} on:click={toggleBool} class="mb-4 sm:mb-0 invert-rot p-8" type="button">
+    </div>
+    {#if !collapsed}
+    <p id={"thing" + id} class="text-4xl font-normal collapse-anim mt-4 mb-2">{content}</p>
+    <!-- add pretty images -->
+    {#each images as image}
+    <img src={image} alt="" class="rounded-lg">
+    {/each}
+
+    {:else}
+    <!-- <hr class="my-8"> -->
+    {/if}
+  </div>
+{/if}
+
 
 <style>
   @keyframes showElement {

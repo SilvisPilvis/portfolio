@@ -3,9 +3,12 @@
     import axios from "axios";
     import ProjectCard from "../Components/ProjectCard.svelte";
     import CollapsableThingy from "../Components/CollapsableThingy.svelte";
+    import Star from "../Components/Star.svelte";
     import Review from "../Components/Review.svelte";
     import ContactForm from "../Components/ContactForm.svelte";
     import me from "../assets/es.png"
+    import instaClone from "../assets/instaclone.png"
+    import go from "../assets/go.png"
 
     const apiKey = import.meta.env.VITE_GITHUB_API_KEY;
 
@@ -52,31 +55,6 @@
         
     })
 
-
-    // projects section
-    // let repos = null;
-    // let loading = true;
-    // let error = null;
-
-    // onMount(async () => {
-    //     try {
-    //         const response = await axios.get("https://api.github.com/users/SilvisPilvis/repos", {
-    //             headers: {
-    //                 "Accept": "application/vnd.github.v3+json",
-    //                 "Authorization": `Bearer ${apiKey}`,
-    //                 "X-GitHub-Api-Version": "2022-11-28"
-    //             },
-    //         });
-    //         repos = response.data;
-    //         // console.log(`Index: ${repos}`);
-    //     } catch (err) {
-    //         error = err.message;
-    //         console.log(error);
-    //     } finally {
-    //         loading = false;
-    //     }
-	// });
-
 </script>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -85,20 +63,20 @@
 
     <article class="sky-bg min-w-screen min-h-screen flex justify-center items-center ">
         <p class="title-animation-trigger flex absolute top-[10%]" hidden></p>
-        <!-- <p class="sm:text-8xl text-5xl font-bold w-min sm:w-[50%] uppercase fancy-text text-text animated t1 text-outline pointer-events-none">Welcome to my portfolio</p> -->
+        <Star image={go} x="10" y="10" rot="10" animlen="5"/>
         <p class="sm:text-8xl text-5xl font-bold w-min uppercase fancy-text text-text animated t1 text-outline pointer-events-none">Silvestrs Lignickis</p>
 
     </article>
 
-    <article class="animated h-screen flex justify-center flex-col">
-        <p class="sm:text-8xl text-6xl font-bold text-text mb-12 ml-8 h-min">About Me:</p>
+    <article class="animated h-screen flex justify-center flex-col w-[min(64rem,100%)] mx-auto">
+        <p class="sm:text-6xl text-4xl font-bold text-text mb-12 ml-8 h-min">About Me:</p>
         <div class="flex sm:flex-row flex-col justify-center items-center gap-12">
             <img src={me} alt="" srcset="" class="w-1/3 max-h-max rounded-lg">
             <div class="flex justify-center flex-col">
-                <p class="text-text text-outline font-bold uppercase sm:text-8xl text-5xl h-[0.75em]">Visionary</p>
-                <p class="text-text text-outline font-bold uppercase sm:text-8xl text-5xl sm:ml-[3.8rem] h-[0.75em]">Entrepreneur</p>
-                <p class="text-text text-outline font-bold uppercase sm:text-8xl text-5xl sm:ml-[6.6rem] h-[0.75em]">Backend -</p>
-                <p class="text-text text-outline font-bold uppercase sm:text-8xl text-5xl sm:ml-[9.7rem] h-[0.75em]">Enthusiast</p>
+                <p class="text-text text-outline font-bold uppercase sm:text-6xl text-5xl h-[0.75em]">Visionary</p>
+                <p class="text-text text-outline font-bold uppercase sm:text-6xl text-5xl ml-[2.8rem] h-[0.75em]">Entrepreneur</p>
+                <p class="text-text text-outline font-bold uppercase sm:text-6xl text-5xl ml-[4.8rem] h-[0.75em]">Backend -</p>
+                <p class="text-text text-outline font-bold uppercase sm:text-6xl text-5xl ml-[7.15rem] h-[0.75em]">Enthusiast</p>
             </div>
         </div>
     </article>
@@ -111,17 +89,17 @@
         <h1 class="text-3xl font-bold text-text">Skills list</h1>
     </article> -->
 
-    <article class="animated h-screen">
-        <p class="sm:text-8xl text-5xl font-bold text-text mb-12 ml-8">Education & Certificates:</p>
+    <article class="animated h-screen w-[min(64rem,100%)] mx-auto">
+        <p class="sm:text-6xl text-4xl font-bold text-text mb-12 ml-8">Education & Certificates:</p>
         <div class="flex flex-col items-center">
             <CollapsableThingy title="Ulbrokas middleschool" content="Primary Education - 2012-2021"/>
             <CollapsableThingy title="Datorium Certificate" content="Certificate from Datorium programming courses."/>
-            <CollapsableThingy title="Latvia Cyber Security Challenge" content="Certificate from Latvia Cyber Security Challenge."/>
+            <CollapsableThingy title="Cyber Security Challenge" content="Certificate from Latvia Cyber Security Challenge."/>
         </div>
     </article>
 
-    <article class="animated h-screen">
-        <p class="sm:text-8xl text-5xl font-bold text-text mb-12 ml-8">My Work Experience @:</p>
+    <article class="animated h-screen w-[min(64rem,100%)] mx-auto">
+        <p class="sm:text-6xl text-4xl font-bold text-text mb-12 ml-8">My Work Experience @:</p>
         <div class="flex flex-col items-center">
             <CollapsableThingy title="SIA EMJ Metāls" content="My job included managing the incoming and outgoing warehouse orders." />
             <CollapsableThingy title="B/N Kurši" content="My responsibilities were restocking the shelves." />
@@ -129,25 +107,28 @@
         </div>
     </article>
 
-    <article class="animated h-screen">
-        <p class="sm:text-8xl text-5xl font-bold text-text mb-12 ml-8">My projects:</p>
+    <article class="animated h-screen w-[min(64rem,100%)] mx-auto">
+        <p class="sm:text-6xl text-4xl font-bold text-text mb-12 ml-8">My projects:</p>
         <div class="flex flex-col items-center">
-            <CollapsableThingy title="TicketTrade" content="My Biggest project to date. The technologies used are PHP, Laravel, Tailwind, MySQL, GoLang" />
-            <CollapsableThingy title="Memquest" content="A web based memory game. The technologies used are PHP, Laravel, Tailwind, MySQL, Vue, Inertia, JavaScript" />
-            <CollapsableThingy title="Goquic" content="A small 2D multiplayer game. The technologies used are Go QUIC, Protobuf, Raylib" />
+            <CollapsableThingy title="InstaClone" content="My first ever semi-serious project. Written using Python3, Flask, SQLAlchemy" images={[instaClone]}/>
+            <CollapsableThingy title="Spaceful" content="A simple warehouse managing app. The technologies used are PHP, Laravel, MySQL, React"/>
+            <CollapsableThingy title="TicketTrade" content="My Biggest project to date. The technologies used are PHP, Laravel, Tailwind, MySQL, GoLang"/>
+            <CollapsableThingy title="Memquest" content="A web based memory game. The technologies used are PHP, Laravel, Tailwind, MySQL, Vue, Inertia, JavaScript"/>
+            <CollapsableThingy title="Goquic" content="A small 2D multiplayer game. The technologies used are Go QUIC, Protobuf, Raylib"/>
+            <CollapsableThingy title="MinimumWage" content="My most educational project. The technologies used are Godot Game Engine, SQLite" project/>
         </div>
     </article>
 
-    <article class="animated h-screen">
+    <!-- <article class="animated h-screen">
         <p class="sm:text-8xl text-5xl mb-12 ml-8 font-bold text-text">Reviews:</p>
-        <!-- <Review review="I am a great person"/> -->
-    </article>
+    </article> -->
 
-    <footer class="animate-fade-in h-screen">
-        <p class="sm:text-8xl text-6xl font-bold text-text mb-12 ml-8">Contact Info:</p>
-        <div class="grid place-items-center mt-28">
-            <ContactForm/>
-        </div>
+    <!-- <footer class="animate-fade-in h-screen"> -->
+    <footer class="animate-fade-in h-[0px]">
+        <!-- <p class="sm:text-8xl text-6xl font-bold text-text mb-12 ml-8">Contact Info:</p> -->
+        <!-- <div class="grid place-items-center mt-28"> -->
+            <!-- <ContactForm/> -->
+        <!-- </div> -->
     </footer>
 
     <!-- <div>
@@ -183,9 +164,9 @@
         /* text-wrap: wrap; */
     }
 
-    article {
+    /* article {
         width: 99vw;
-    }
+    } */
 
     .fancy-text {
         position: fixed;
