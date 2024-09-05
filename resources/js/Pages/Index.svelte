@@ -8,9 +8,50 @@
     import ContactForm from "../Components/ContactForm.svelte";
     import me from "../assets/es.png"
     import instaClone from "../assets/instaclone.png"
-    import go from "../assets/go.png"
 
-    const apiKey = import.meta.env.VITE_GITHUB_API_KEY;
+    import go from "../assets/go.png"
+    import raylib from "../assets/raylib.png"
+    import laravel from "../assets/laravel.png"
+    import vue from "../assets/vue.png"
+    import svelteLogo from "../assets/svelte.png"
+    import sqla from "../assets/sqla.png"
+    import flask from "../assets/flask.png"
+    import react from "../assets/react.png"
+    import python from "../assets/python.svg"
+    import tailwind from "../assets/tailwind.svg"
+    import protobuf from "../assets/protobuf.png"
+    import godot from "../assets/godot.png"
+    import javascript from "../assets/javascript.png"
+    import inertiaLogo from "../assets/inertia.png"
+    import php from "../assets/php.png"
+    import mysql from "../assets/mysql.svg"
+    import sqlite from "../assets/sqlite.png"
+
+    const stars = [
+        go,
+        raylib,
+        laravel,
+        vue,
+        svelteLogo,
+        sqla,
+        flask,
+        react,
+        python,
+        tailwind,
+        protobuf,
+        godot,
+        javascript,
+        inertiaLogo,
+        php,
+        mysql,
+        sqlite
+    ];
+
+    // const apiKey = import.meta.env.VITE_GITHUB_API_KEY;
+
+    function getRandIntRange(min, max) {
+        return Math.random() * (max - min) + min;
+    }
 
     onMount(async () => {
         // all animated sections
@@ -63,7 +104,9 @@
 
     <article class="sky-bg min-w-screen min-h-screen flex justify-center items-center ">
         <p class="title-animation-trigger flex absolute top-[10%]" hidden></p>
-        <Star image={go} x="10" y="10" rot="10" animlen="5"/>
+        {#each stars as star}   
+            <Star image={star} x={Math.random() * 100} y={Math.random() * 100} rot={Math.random() * 360} animlen={getRandIntRange(3, 7)}/>
+        {/each}
         <p class="sm:text-8xl text-5xl font-bold w-min uppercase fancy-text text-text animated t1 text-outline pointer-events-none">Silvestrs Lignickis</p>
 
     </article>
