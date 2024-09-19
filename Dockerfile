@@ -9,17 +9,24 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip
+    unzip \
+    lsb-release \
+    ca-certificates \
+    apt-transport-https \
+    software-properties-common
 
-# Install PHP and required extensions
-RUN apt-get install -y php8.2 \
-    php8.2-cli \
-    php8.2-common \
-    php8.2-curl \
-    php8.2-mbstring \
-    php8.2-mysql \
-    php8.2-xml \
-    php8.2-zip
+# Add PHP repository and install PHP 8.1
+RUN curl -sSL https://packages.sury.org/php/README.txt | bash -x
+RUN apt-get update && apt-get install -y php8.1 \
+    php8.1-cli \
+    php8.1-common \
+    php8.1-curl \
+    php8.1-mbstring \
+    php8.1-mysql \
+    php8.1-xml \
+    php8.1-zip \
+    php8.1-bcmath \
+    php8.1-fpm
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -46,5 +53,5 @@ RUN chown -R www-data:www-data /var/www/html \
 # Expose port 8000
 EXPOSE 8000
 
-# Start the application
-CMD php artisan serve --host=0.0.0.0 --port=8000
+# Start the application using JSON array format
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
