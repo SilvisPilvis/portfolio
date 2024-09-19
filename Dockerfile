@@ -37,6 +37,9 @@ WORKDIR /var/www/html
 # Copy application files
 COPY . .
 
+#Update composer dependencies
+RUN composer update
+
 # Install PHP dependencies
 RUN composer install --no-interaction --no-plugins --no-scripts
 
