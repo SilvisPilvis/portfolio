@@ -12,14 +12,14 @@ RUN apt-get update && apt-get install -y \
     unzip
 
 # Install PHP and required extensions
-RUN apt-get install -y php \
-    php-cli \
-    php-common \
-    php-curl \
-    php-mbstring \
-    php-mysql \
-    php-xml \
-    php-zip
+RUN apt-get install -y php8.1 \
+    php8.1-cli \
+    php8.1-common \
+    php8.1-curl \
+    php8.1-mbstring \
+    php8.1-mysql \
+    php8.1-xml \
+    php8.1-zip
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
