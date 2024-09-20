@@ -1,5 +1,5 @@
 # Use the official Bun image as the base image
-FROM oven/bun:latest
+FROM --platform=$TARGETPLATFORM oven/bun:latest
 
 # Set ARGs for build-time variables
 # ARG BUILD_DATE
