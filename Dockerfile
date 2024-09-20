@@ -2,18 +2,18 @@
 FROM oven/bun:latest
 
 # Set ARGs for build-time variables
-ARG BUILD_DATE
-ARG VERSION
-ARG COMMIT_SHA
+# ARG BUILD_DATE
+# ARG VERSION
+# ARG COMMIT_SHA
 ARG DOMAIN_NAME
 
 # Add metadata labels
-LABEL maintainer="Your Name <your.email@example.com>" \
+LABEL maintainer="Silvestrs Lignickis <silvestrsl47@gmail.com>" \
       version="${VERSION}" \
-      description="Laravel application with Svelte frontend using Bun" \
-      org.opencontainers.image.created="${BUILD_DATE}" \
-      org.opencontainers.image.version="${VERSION}" \
-      org.opencontainers.image.revision="${COMMIT_SHA}" \
+      description="Laravel application with Inertia/Svelte frontend using Bun" \
+      # org.opencontainers.image.created="${BUILD_DATE}" \
+      # org.opencontainers.image.version="${VERSION}" \
+      # org.opencontainers.image.revision="${COMMIT_SHA}" \
       org.opencontainers.image.source="https://github.com/SilvisPilvis/portfolio"
 
 # Add Traefik labels
