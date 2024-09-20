@@ -1,6 +1,32 @@
 # Use the official Bun image as the base image
 FROM oven/bun:latest
 
+# Set ARGs for build-time variables
+ARG BUILD_DATE
+ARG VERSION
+ARG COMMIT_SHA
+ARG DOMAIN_NAME
+
+# Add metadata labels
+LABEL maintainer="Your Name <your.email@example.com>" \
+      version="${VERSION}" \
+      description="Laravel application with Svelte frontend using Bun" \
+      org.opencontainers.image.created="${BUILD_DATE}" \
+      org.opencontainers.image.version="${VERSION}" \
+      org.opencontainers.image.revision="${COMMIT_SHA}" \
+      org.opencontainers.image.source="https://github.com/SilvisPilvis/portfolio"
+
+# Add Traefik labels
+LABEL traefik.docker.network="passbolt_default" \
+      traefik.enable="true" \
+      traefik.http.routers.portfolio-http.entrypoints="web" \
+      traefik.http.routers.portfolio-http.rule="Host(`${DOMAIN_NAME}`)" \
+      traefik.http.routers.portfolio-https.entrypoints="websecure" \
+      traefik.http.routers.portfolio-https.tls="true" \
+      traefik.http.routers.portfolio-router.tls.certresolver="letsencrypt" \
+      traefik.http.services.portfolio-router.loadbalancer.server.port="8000"
+
+
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
