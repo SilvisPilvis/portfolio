@@ -22,6 +22,7 @@ LABEL traefik.docker.network="passbolt_default" \
       traefik.http.routers.portfolio-http.entrypoints="web" \
       traefik.http.routers.portfolio-http.rule="Host(`${DOMAIN_NAME}`)" \
       traefik.http.routers.portfolio-https.entrypoints="websecure" \
+      traefik.http.routers.portfolio-https.rule="Host(`${DOMAIN_NAME}`)" \
       traefik.http.routers.portfolio-https.tls="true" \
       traefik.http.routers.portfolio-router.tls.certresolver="letsencrypt" \
       traefik.http.services.portfolio-router.loadbalancer.server.port="8000"
@@ -83,4 +84,4 @@ RUN chown -R www-data:www-data /var/www/html \
 EXPOSE 8000
 
 # Start the application using JSON array format
-CMD ["php", "artisan", "serve","--port=8000"]
+CMD ["php", "artisan", "serve", "--port=8000"]
