@@ -20,12 +20,12 @@ LABEL maintainer="Silvestrs Lignickis <silvestrsl47@gmail.com>" \
 LABEL traefik.docker.network="passbolt_default" \
       traefik.enable="true" \
       traefik.http.routers.portfolio-http.entrypoints="web" \
-      traefik.http.routers.portfolio-http.rule="Host(`${DOMAIN_NAME}`)" \
+      traefik.http.routers.portfolio-http.rule="Host(`portfolio.vinetaerentraute.id.lv`)" \
       traefik.http.routers.portfolio-https.entrypoints="websecure" \
-      traefik.http.routers.portfolio-https.rule="Host(`${DOMAIN_NAME}`)" \
+      traefik.http.routers.portfolio-https.rule="Host(`portfolio.vinetaerentraute.id.lv`)" \
       traefik.http.routers.portfolio-https.tls="true" \
       traefik.http.routers.portfolio-router.tls.certresolver="letsencrypt" \
-      traefik.http.services.portfolio-router.loadbalancer.server.port="8000"
+      traefik.http.services.portfolio.loadbalancer.server.port="8000"
 
 
 # Install system dependencies
