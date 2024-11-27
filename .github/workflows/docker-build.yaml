@@ -1,0 +1,137 @@
+name: Build and Deploy Docker Container
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  release:
+    types: [published]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Setup Docker buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log into registry ${{ env.REGISTRY }}
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha
+
+      - name: Create .env file
+        run: |
+          echo "APP_NAME=Laravel" > .env
+          echo "APP_ENV=production" >> .env
+          echo "APP_KEY=" >> .env
+          echo "APP_DEBUG=false" >> .env
+          echo "APP_URL=http://localhost" >> .env
+          echo "DB_CONNECTION=sqlite" >> .env
+
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          platforms: linux/arm64/v8
+          push: false
+          # file: docker/Dockerfile
+          # push: ${{ github.event_name != 'pull_request' }}
+          # tags: ${{ steps.meta.outputs.tags }}
+          tags: | 
+            portfolio:${{ github.sha }}
+            portfolio:latest
+          # labels: ${{ steps.meta.outputs.labels }}
+          labels: |
+            traefik.docker.network="passbolt_default" \
+            traefik.enable="true" \
+            traefik.http.routers.portfolio-http.entrypoints="web" \
+            traefik.http.routers.portfolio-http.rule="Host(`portfolio.vinetaerentraute.id.lv`)" \
+            traefik.http.routers.portfolio-https.entrypoints="websecure" \
+            traefik.http.routers.portfolio-https.rule="Host(`portfolio.vinetaerentraute.id.lv`)" \
+            traefik.http.routers.portfolio-https.tls="true" \
+            traefik.http.routers.portfolio-router.tls.certresolver="letsencrypt" \
+            traefik.http.services.portfolio.loadbalancer.server.port="9000"
+          # traefik.enable=true
+          # traefik.http.routers.portfolio.rule=Host(`portfolio.localhost`)
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          output: type=docker, dest=/tmp/portfolio-${{ github.sha }}.tar
+
+      # - name: Build and push Nginx image
+      #   uses: docker/build-push-action@v5
+      #   with:
+      #     context: .
+      #     platforms: linux/arm64/v8
+      #     file: docker/nginx/Dockerfile
+      #     # push: ${{ github.event_name != 'pull_request' }}
+      #     push: false
+      #     tags: |
+      #       ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-nginx:${{ github.sha }}
+      #       ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-nginx:latest
+      #     labels: |
+      #       traefik.docker.network="passbolt_default" \
+      #       traefik.enable="true" \
+      #       traefik.http.routers.portfolio-http.entrypoints="web" \
+      #       traefik.http.routers.portfolio-http.rule="Host(`portfolio.vinetaerentraute.id.lv`)" \
+      #       traefik.http.routers.portfolio-https.entrypoints="websecure" \
+      #       traefik.http.routers.portfolio-https.rule="Host(`portfolio.vinetaerentraute.id.lv`)" \
+      #       traefik.http.routers.portfolio-https.tls="true" \
+      #       traefik.http.routers.portfolio-router.tls.certresolver="letsencrypt" \
+      #       traefik.http.services.portfolio.loadbalancer.server.port="9000"
+      #     cache-from: type=gha
+      #     cache-to: type=gha,mode=max
+      #     output: type=docker, dest=/tmp/nginx-${{ github.sha }}.tar
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+      - name: Upload Docker images
+        uses: actions/upload-artifact@v4
+        with:
+          name: docker-images
+          path: |
+            /tmp/portfolio-${{ github.sha }}.tar
+          # /tmp/portfolio-nginx-${{ github.sha }}.tar
+          compression-level: 0  # No compression for binary files
+          retention-days: 1

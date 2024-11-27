@@ -1,34 +1,7 @@
-# Use the official Bun image as the base image
-FROM --platform=$TARGETPLATFORM oven/bun:latest
+FROM php:8.2-fpm
 
-# Set ARGs for build-time variables
-# ARG BUILD_DATE
-# ARG VERSION
-# ARG COMMIT_SHA
-ARG DOMAIN_NAME
+WORKDIR /var/www/html
 
-# Add metadata labels
-LABEL maintainer="Silvestrs Lignickis <silvestrsl47@gmail.com>" \
-      version="${VERSION}" \
-      description="Laravel application with Inertia/Svelte frontend using Bun" \
-      # org.opencontainers.image.created="${BUILD_DATE}" \
-      # org.opencontainers.image.version="${VERSION}" \
-      # org.opencontainers.image.revision="${COMMIT_SHA}" \
-      org.opencontainers.image.source="https://github.com/SilvisPilvis/portfolio"
-
-# Add Traefik labels
-LABEL traefik.docker.network="passbolt_default" \
-      traefik.enable="true" \
-      traefik.http.routers.portfolio-http.entrypoints="web" \
-      traefik.http.routers.portfolio-http.rule="Host(`portfolio.vinetaerentraute.id.lv`)" \
-      traefik.http.routers.portfolio-https.entrypoints="websecure" \
-      traefik.http.routers.portfolio-https.rule="Host(`portfolio.vinetaerentraute.id.lv`)" \
-      traefik.http.routers.portfolio-https.tls="true" \
-      traefik.http.routers.portfolio-router.tls.certresolver="letsencrypt" \
-      traefik.http.services.portfolio.loadbalancer.server.port="8000"
-
-
-# Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -37,51 +10,38 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     zip \
     unzip \
-    lsb-release \
-    ca-certificates \
-    apt-transport-https \
-    software-properties-common
+    libzip-dev
 
-# Add PHP repository and install PHP 8.1
-RUN curl -sSL https://packages.sury.org/php/README.txt | bash -x
-RUN apt-get update && apt-get install -y php8.2 \
-    php8.2-cli \
-    php8.2-common \
-    php8.2-curl \
-    php8.2-mbstring \
-    php8.2-mysql \
-    php8.2-xml \
-    php8.2-zip \
-    php8.2-bcmath \
-    php8.2-fpm
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
 
-# Set working directory
-WORKDIR /var/www/html
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copy application files
-COPY . .
+RUN curl -fsSL https://bun.sh/install | bash
+ENV PATH="/root/.bun/bin:${PATH}"
 
-#Update composer dependencies
-RUN composer update
+# Configure PHP for production
+# RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
+#     sed -i 's/memory_limit = 128M/memory_limit = 256M/' "$PHP_INI_DIR/php.ini"
 
-# Install PHP dependencies
-RUN composer install --no-interaction --no-plugins --no-scripts
+# COPY . .
+# COPY .env .env
 
-# Install Bun dependencies
+COPY composer.* ./
+COPY package.json bun.lockb ./
+RUN composer install --no-interaction --no-dev --optimize-autoloader
 RUN bun install
 
-# Build Svelte app
+COPY . .
+
 RUN bun run build
+RUN php artisan key:generate
 
-# Set permissions
 RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html/storage
+    && chmod -R 775 /var/www/html/storage \
+    && chmod -R 775 /var/www/html/bootstrap/cache
 
-# Expose port 8000
-EXPOSE 8000
+EXPOSE 9000
 
-# Start the application using JSON array format
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+CMD ["php-fpm"]
