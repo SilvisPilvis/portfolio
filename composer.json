@@ -1,12 +1,12 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "Silvestra Portfolio.",
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "inertiajs/inertia-laravel": "^1.2",
+        "inertiajs/inertia-laravel": "^1.3",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9"
     },

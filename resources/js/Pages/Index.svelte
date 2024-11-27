@@ -105,7 +105,7 @@
     <article class="sky-bg min-w-screen min-h-screen flex justify-center items-center ">
         <p class="title-animation-trigger flex absolute top-[10%]" hidden></p>
         {#each stars as star}   
-            <Star image={star} x={Math.random() * 100} y={Math.random() * 100} rot={Math.random() * 360} animlen={getRandIntRange(3, 7)}/>
+            <Star image={star} x={Math.floor(Math.random() * 95)} y={Math.floor(Math.random() * 95)} rot={Math.random() * 360} animlen={getRandIntRange(3, 7)}/>
         {/each}
         <p class="sm:text-8xl text-5xl font-bold w-min uppercase fancy-text text-text animated t1 text-outline pointer-events-none">Silvestrs Lignickis</p>
 

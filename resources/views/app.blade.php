@@ -6,6 +6,7 @@
     @vite('resources/js/app.js')
     @vite('resources/css/app.css')
     @inertiaHead
+    <title>Silvestrs Portfolio</title>
   </head>
   <body class="bg-background">
     @inertia

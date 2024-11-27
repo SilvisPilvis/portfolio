@@ -1,5 +1,4 @@
 import './bootstrap';
-
 import { createInertiaApp } from '@inertiajs/svelte'
 
 createInertiaApp({
@@ -9,7 +8,10 @@ createInertiaApp({
     return pages[`./Pages/${name}.svelte`]
   },
   setup({ el, App, props }) {
-    new App({ target: el, props })
+    new App({ target: el, props, hydrate: true })
+  },
+  progress: {
+    color: '#4B5563',
   },
   id: 'app',
 })
