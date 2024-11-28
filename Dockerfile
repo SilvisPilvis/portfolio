@@ -1,22 +1,35 @@
-FROM php:8.3-fpm-alpine
+# FROM php:8.3-fpm
+# Use the official Bun image as the base image
+FROM --platform=$TARGETPLATFORM oven/bun:latest
 
 WORKDIR /var/www/html
 
 # Install system dependencies
-# RUN apk add --no-cache git curl libpng libpng-dev libjpeg-turbo-dev libwebp-dev zlib-dev libxpm-dev gd-dev zip libzip-dev
-RUN apk add --no-cache \
+RUN apt-get update && apt-get install -y \
     git \
     curl \
     libpng-dev \
-    oniguruma-dev \
+    libonig-dev \
     libxml2-dev \
     zip \
     unzip \
-    nginx \
-    # Required for building PHP extensions
-    autoconf \
-    g++ \
-    make
+    lsb-release \
+    ca-certificates \
+    apt-transport-https \
+    software-properties-common
+
+# Add PHP repository and install PHP 8.1
+RUN curl -sSL https://packages.sury.org/php/README.txt | bash -x
+RUN apt-get update && apt-get install -y php8.2 \
+    php8.2-cli \
+    php8.2-common \
+    php8.2-curl \
+    php8.2-mbstring \
+    php8.2-mysql \
+    php8.2-xml \
+    php8.2-zip \
+    php8.2-bcmath \
+    php8.2-fpm
 
 LABEL traefik.docker.network="passbolt_default" \
     traefik.enable="true" \
@@ -30,7 +43,7 @@ LABEL traefik.docker.network="passbolt_default" \
 
 # Install PHP extensions
 # RUN docker-php-ext-install pdo pdo_mysql gd zip exif pcntl
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+# RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -39,15 +52,15 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # ENV PATH="/root/.bun/bin:${PATH}"
 
 # Alternative Bun installation method
-RUN case "$(uname -m)" in \
-    aarch64) ARCH="aarch64" ;; \
-    x86_64) ARCH="x64" ;; \
-    *) echo "Unsupported architecture"; exit 1 ;; \
-    esac && \
-    wget -q https://github.com/oven-sh/bun/releases/latest/download/bun-linux-${ARCH}.zip && \
-    unzip bun-linux-${ARCH}.zip && \
-    mv bun-linux-${ARCH}/bun /usr/local/bin/bun && \
-    rm -rf bun-linux-${ARCH}.zip bun-linux-${ARCH}
+# RUN case "$(uname -m)" in \
+#     aarch64) ARCH="aarch64" ;; \
+#     x86_64) ARCH="x64" ;; \
+#     *) echo "Unsupported architecture"; exit 1 ;; \
+#     esac && \
+#     wget -q https://github.com/oven-sh/bun/releases/latest/download/bun-linux-${ARCH}.zip && \
+#     unzip bun-linux-${ARCH}.zip && \
+#     mv bun-linux-${ARCH}/bun /usr/local/bin/bun && \
+#     rm -rf bun-linux-${ARCH}.zip bun-linux-${ARCH}
 
 # Remove default server definition
 # RUN rm -rf /var/www/html
