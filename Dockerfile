@@ -1,6 +1,4 @@
-FROM php:8.2-fpm
-
-WORKDIR /var/www/html
+FROM php:8.2-fpm-alpine
 
 RUN apt-get update && apt-get install -y \
     git \
@@ -12,14 +10,23 @@ RUN apt-get update && apt-get install -y \
     unzip \
     libzip-dev
 
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+# Install system dependencies
+RUN apk add --no-cache git curl libpng libpng-dev libjpeg-turbo-dev libwebp-dev zlib-dev libxpm-dev gd-dev zip libzip-dev
 
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
+# Install PHP extensions
+RUN docker-php-ext-install pdo pdo_mysql gd zip exif pcntl
+
+WORKDIR /var/www
+
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 RUN curl -fsSL https://bun.sh/install | bash
 ENV PATH="/root/.bun/bin:${PATH}"
+
+COPY . /var/www
+
+COPY --chown=www-data:www-data . /var/www
 
 # Configure PHP for production
 # RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
@@ -28,19 +35,19 @@ ENV PATH="/root/.bun/bin:${PATH}"
 # COPY . .
 # COPY .env .env
 
-COPY composer.* ./
-COPY package.json bun.lockb ./
-RUN composer install --no-interaction --no-dev --optimize-autoloader
-RUN bun install
+# COPY composer.* ./
+# COPY package.json bun.lockb ./
+# RUN composer install --no-interaction --no-dev --optimize-autoloader
+# RUN bun install
 
-COPY . .
+# COPY . .
 
 RUN bun run build
 RUN php artisan key:generate
 
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 775 /var/www/html/storage \
-    && chmod -R 775 /var/www/html/bootstrap/cache
+# RUN chown -R www-data:www-data /var/www/html \
+#     && chmod -R 775 /var/www/html/storage \
+#     && chmod -R 775 /var/www/html/bootstrap/cache
 
 EXPOSE 9000
 
