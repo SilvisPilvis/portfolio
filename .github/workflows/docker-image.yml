@@ -32,7 +32,8 @@ jobs:
         outputs: type=docker,dest=/tmp/docker-image-${{ github.sha }}.tar
 
     - name: Upload Docker image as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: docker-image-${{ github.sha }}
         path: /tmp/docker-image-${{ github.sha }}.tar
+        retention-days: 1
