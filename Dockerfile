@@ -31,15 +31,15 @@ RUN apt-get update && apt-get install -y php8.2 \
     php8.2-bcmath \
     php8.2-fpm
 
-LABEL traefik.docker.network="passbolt_default" \
-    traefik.enable="true" \
-    traefik.http.routers.portfolio-http.entrypoints="web" \
-    traefik.http.routers.portfolio-http.rule="Host(`portfolio.vinetaerentraute.id.lv`)" \
-    traefik.http.routers.portfolio-https.entrypoints="websecure" \
-    traefik.http.routers.portfolio-https.rule="Host(`portfolio.vinetaerentraute.id.lv`)" \
-    traefik.http.routers.portfolio-https.tls="true" \
-    traefik.http.routers.portfolio-router.tls.certresolver="letsencrypt" \
-    traefik.http.services.portfolio.loadbalancer.server.port="8100"
+# LABEL traefik.docker.network=passbolt_default
+#     traefik.enable="true" \
+#     traefik.http.routers.portfolio-http.entrypoints="web" \
+#     traefik.http.routers.portfolio-http.rule="Host(`portfolio.vinetaerentraute.id.lv`)" \
+#     traefik.http.routers.portfolio-https.entrypoints="websecure" \
+#     traefik.http.routers.portfolio-https.rule="Host(`portfolio.vinetaerentraute.id.lv`)" \
+#     traefik.http.routers.portfolio-https.tls="true" \
+#     traefik.http.routers.portfolio-router.tls.certresolver="letsencrypt" \
+#     traefik.http.services.portfolio.loadbalancer.server.port="8100"
 
 # Install PHP extensions
 # RUN docker-php-ext-install pdo pdo_mysql gd zip exif pcntl
