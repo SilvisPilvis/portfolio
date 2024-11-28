@@ -89,7 +89,8 @@ jobs:
         with:
           name: docker-images
           path: |
-            /tmp/portfolio-${{ github.sha }}.tar
-            /tmp/portfolio-nginx-${{ github.sha }}.tar
+            /tmp/portfolio.tar
+          # /tmp/portfolio-${{ github.sha }}.tar
+          # /tmp/portfolio-nginx-${{ github.sha }}.tar
           compression-level: 0  # No compression for binary files
           retention-days: 1
