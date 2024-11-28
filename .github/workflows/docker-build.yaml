@@ -73,7 +73,7 @@ jobs:
             traefik.enable=true
             traefik.http.routers.portfolio-http.entrypoints=web
             traefik.http.routers.portfolio-http.rule=Host(`portfolio.vinetaerentraute.id.lv`)
-            traefik.http.routers.portfolio-https.entrypoints=websecure" \
+            traefik.http.routers.portfolio-https.entrypoints=websecure
             traefik.http.routers.portfolio-https.rule=Host(`portfolio.vinetaerentraute.id.lv`)
             traefik.http.routers.portfolio-https.tls=true
             traefik.http.routers.portfolio-router.tls.certresolver=letsencrypt

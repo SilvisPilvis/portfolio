@@ -91,8 +91,8 @@ RUN chown -R www-data:www-data /var/www/html \
 # Change current user to www
 # USER www-data
 
-EXPOSE 8100
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8100"]
+EXPOSE 8000
+CMD ["php", "artisan", "serve"]
 
 # EXPOSE 9000
 
