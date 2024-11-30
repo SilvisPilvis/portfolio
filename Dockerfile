@@ -41,10 +41,10 @@ RUN bun run build
 RUN chown -R www-data:www-data /var/www/html
 
 # Configure PHP-FPM to listen on port 80
-RUN sed -i 's/listen = 127.0.0.1:9000/listen = 0.0.0.0:80/' /usr/local/etc/php-fpm.d/www.conf
+RUN sed -i 's/listen = 127.0.0.1:9000/listen = 0.0.0.0:9000/' /usr/local/etc/php-fpm.d/www.conf
 
 # Expose port 80
-EXPOSE 80
+EXPOSE 9000
 
 # Start PHP-FPM
 CMD ["php-fpm"]
