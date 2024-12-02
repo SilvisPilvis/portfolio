@@ -1,31 +1,33 @@
-<script defer>
+<script>
     import { onMount } from "svelte";
-    import axios from "axios";
-    import ProjectCard from "../Components/ProjectCard.svelte";
+    // import axios from "axios";
+    // import ProjectCard from "../Components/ProjectCard.svelte";
     import CollapsableThingy from "../Components/CollapsableThingy.svelte";
     import Star from "../Components/Star.svelte";
-    import Review from "../Components/Review.svelte";
-    import ContactForm from "../Components/ContactForm.svelte";
-    import me from "../assets/es.png"
-    import instaClone from "../assets/instaclone.png"
+    // import CollapsableThingy from "./CollapsableThingy.svelte";
+    // import Star from "./Star.svelte";
+    // import Review from "../Components/Review.svelte";
+    // import ContactForm from "../Components/ContactForm.svelte";
+    import me from "../assets/es.png";
+    import instaClone from "../assets/instaclone.png";
 
-    import go from "../assets/go.png"
-    import raylib from "../assets/raylib.png"
-    import laravel from "../assets/laravel.png"
-    import vue from "../assets/vue.png"
-    import svelteLogo from "../assets/svelte.png"
-    import sqla from "../assets/sqla.png"
-    import flask from "../assets/flask.png"
-    import react from "../assets/react.png"
-    import python from "../assets/python.svg"
-    import tailwind from "../assets/tailwind.svg"
-    import protobuf from "../assets/protobuf.png"
-    import godot from "../assets/godot.png"
-    import javascript from "../assets/javascript.png"
-    import inertiaLogo from "../assets/inertia.png"
-    import php from "../assets/php.png"
-    import mysql from "../assets/mysql.svg"
-    import sqlite from "../assets/sqlite.png"
+    import go from "../assets/go.png";
+    import raylib from "../assets/raylib.png";
+    import laravel from "../assets/laravel.png";
+    import vue from "../assets/vue.png";
+    import svelteLogo from "../assets/svelte.png";
+    import sqla from "../assets/sqla.png";
+    import flask from "../assets/flask.png";
+    import react from "../assets/react.png";
+    import python from "../assets/python.svg";
+    import tailwind from "../assets/tailwind.svg";
+    import protobuf from "../assets/protobuf.png";
+    import godot from "../assets/godot.png";
+    import javascript from "../assets/javascript.png";
+    import inertiaLogo from "../assets/inertia.png";
+    import php from "../assets/php.png";
+    import mysql from "../assets/mysql.svg";
+    import sqlite from "../assets/sqlite.png";
 
     const stars = [
         go,
@@ -44,7 +46,7 @@
         inertiaLogo,
         php,
         mysql,
-        sqlite
+        sqlite,
     ];
 
     // const apiKey = import.meta.env.VITE_GITHUB_API_KEY;
@@ -65,11 +67,10 @@
                 } else {
                     // left screen
                     entry.target.classList.remove("animate-fade-in");
-
                 }
-            })
-        })
-    
+            });
+        });
+
         const animatedElements = document.querySelectorAll(".s-_3yNjIecwZ-L");
         animatedElements.forEach((el) => observer.observe(el));
 
@@ -88,77 +89,168 @@
                     }
                     // entry.target.classList.remove(".animate-fade-in");
                 }
-            })
-        })
-    
-        const animatedTitle = document.querySelectorAll(".title-animation-trigger");
-        animatedTitle.forEach((el) => titleObserver.observe(el));
-        
-    })
+            });
+        });
 
+        const animatedTitle = document.querySelectorAll(
+            ".title-animation-trigger",
+        );
+        animatedTitle.forEach((el) => titleObserver.observe(el));
+    });
 </script>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0"
+/>
 
 <main class="bg-background">
-
-    <article class="sky-bg min-w-screen min-h-screen flex justify-center items-center ">
+    <article
+        class="sky-bg min-w-screen min-h-screen flex justify-center items-center"
+    >
         <p class="title-animation-trigger flex absolute top-[10%]" hidden></p>
-        {#each stars as star}   
-            <Star image={star} x={Math.floor(Math.random() * 95)} y={Math.floor(Math.random() * 95)} rot={Math.random() * 360} animlen={getRandIntRange(3, 7)}/>
+        {#each stars as star}
+            <Star
+                image={star}
+                x={Math.floor(Math.random() * 95)}
+                y={Math.floor(Math.random() * 95)}
+                rot={Math.random() * 360}
+                animlen={getRandIntRange(3, 7)}
+            />
         {/each}
-        <p class="sm:text-8xl text-5xl font-bold w-min uppercase fancy-text text-text animated t1 text-outline pointer-events-none">Silvestrs Lignickis</p>
-
+        <p
+            class="sm:text-8xl text-5xl font-bold w-min uppercase fancy-text text-text animated t1 text-outline pointer-events-none"
+        >
+            Silvestrs Lignickis
+        </p>
     </article>
 
-    <article class="animated h-screen flex justify-center flex-col w-[min(64rem,100%)] mx-auto">
-        <p class="sm:text-6xl text-4xl font-bold text-text mb-12 ml-8 h-min">About Me:</p>
-        <div class="flex sm:flex-row flex-col justify-center items-center gap-12">
-            <img src={me} alt="" srcset="" class="w-1/3 max-h-max rounded-lg">
+    <article
+        class="animated h-screen flex justify-center flex-col w-[min(64rem,100%)] mx-auto"
+    >
+        <p class="sm:text-6xl text-4xl font-bold text-text mb-12 ml-8 h-min">
+            About Me:
+        </p>
+        <div
+            class="flex sm:flex-row flex-col justify-center items-center gap-12"
+        >
+            <img src={me} alt="" srcset="" class="w-1/3 max-h-max rounded-lg" />
             <div class="flex justify-center flex-col">
-                <p class="text-text text-outline font-bold uppercase sm:text-6xl text-5xl h-[0.75em]">Visionary</p>
-                <p class="text-text text-outline font-bold uppercase sm:text-6xl text-5xl ml-[2.8rem] h-[0.75em]">Entrepreneur</p>
-                <p class="text-text text-outline font-bold uppercase sm:text-6xl text-5xl ml-[4.8rem] h-[0.75em]">Backend -</p>
-                <p class="text-text text-outline font-bold uppercase sm:text-6xl text-5xl ml-[7.15rem] h-[0.75em]">Enthusiast</p>
+                <p
+                    class="text-text text-outline font-bold uppercase sm:text-6xl text-5xl h-[0.75em]"
+                >
+                    Visionary
+                </p>
+                <p
+                    class="text-text text-outline font-bold uppercase sm:text-6xl text-5xl ml-[2.8rem] h-[0.75em]"
+                >
+                    Entrepreneur
+                </p>
+                <p
+                    class="text-text text-outline font-bold uppercase sm:text-6xl text-5xl ml-[4.8rem] h-[0.75em]"
+                >
+                    Backend -
+                </p>
+                <p
+                    class="text-text text-outline font-bold uppercase sm:text-6xl text-5xl ml-[7.15rem] h-[0.75em]"
+                >
+                    Enthusiast
+                </p>
             </div>
         </div>
     </article>
 
-    <!-- <article class="animated h-screen">
-        <h1 class="text-3xl font-bold text-text">Project list</h1>
-    </article>
-
-    <article class="animated h-screen">
-        <h1 class="text-3xl font-bold text-text">Skills list</h1>
-    </article> -->
-
     <article class="animated h-screen w-[min(64rem,100%)] mx-auto">
-        <p class="sm:text-6xl text-4xl font-bold text-text mb-12 ml-8">Education & Certificates:</p>
+        <p class="sm:text-6xl text-4xl font-bold text-text mb-12 ml-8">
+            Education & Certificates:
+        </p>
         <div class="flex flex-col items-center">
-            <CollapsableThingy title="Ulbrokas middleschool" content="Primary Education - 2012-2021"/>
-            <CollapsableThingy title="Datorium Certificate" content="Certificate from Datorium programming courses."/>
-            <CollapsableThingy title="Cyber Security Challenge" content="Certificate from Latvia Cyber Security Challenge."/>
+            <CollapsableThingy
+                title="Ulbrokas middleschool"
+                content="Primary Education - 2012-2021"
+            />
+            <CollapsableThingy
+                title="Datorium Certificate"
+                content="Certificate from Datorium programming courses."
+            />
+            <CollapsableThingy
+                title="Cyber Security Challenge"
+                content="Certificate from Latvia Cyber Security Challenge."
+            />
         </div>
     </article>
 
     <article class="animated h-screen w-[min(64rem,100%)] mx-auto">
-        <p class="sm:text-6xl text-4xl font-bold text-text mb-12 ml-8">My Work Experience @:</p>
+        <p class="sm:text-6xl text-4xl font-bold text-text mb-12 ml-8">
+            Education & Certificates:
+        </p>
         <div class="flex flex-col items-center">
-            <CollapsableThingy title="SIA EMJ Metāls" content="My job included managing the incoming and outgoing warehouse orders." />
-            <CollapsableThingy title="B/N Kurši" content="My responsibilities were restocking the shelves." />
-            <CollapsableThingy title="Ulbrokas Middleschool" content="Just cleaning in general. And various other stuff." />
+            <CollapsableThingy
+                title="Ulbrokas middleschool"
+                content="Primary Education - 2012-2021"
+            />
+            <CollapsableThingy
+                title="Datorium Certificate"
+                content="Certificate from Datorium programming courses."
+            />
+            <CollapsableThingy
+                title="Cyber Security Challenge"
+                content="Certificate from Latvia Cyber Security Challenge."
+            />
         </div>
     </article>
 
     <article class="animated h-screen w-[min(64rem,100%)] mx-auto">
-        <p class="sm:text-6xl text-4xl font-bold text-text mb-12 ml-8">My projects:</p>
+        <p class="sm:text-6xl text-4xl font-bold text-text mb-12 ml-8">
+            My Work Experience @:
+        </p>
         <div class="flex flex-col items-center">
-            <CollapsableThingy title="InstaClone" content="My first ever semi-serious project. Written using Python3, Flask, SQLAlchemy" images={[instaClone]}/>
-            <CollapsableThingy title="Spaceful" content="A simple warehouse managing app. The technologies used are PHP, Laravel, MySQL, React"/>
-            <CollapsableThingy title="TicketTrade" content="My Biggest project to date. The technologies used are PHP, Laravel, Tailwind, MySQL, GoLang"/>
-            <CollapsableThingy title="Memquest" content="A web based memory game. The technologies used are PHP, Laravel, Tailwind, MySQL, Vue, Inertia, JavaScript"/>
-            <CollapsableThingy title="Goquic" content="A small 2D multiplayer game. The technologies used are Go QUIC, Protobuf, Raylib"/>
-            <CollapsableThingy title="MinimumWage" content="My most educational project. The technologies used are Godot Game Engine, SQLite" project/>
+            <CollapsableThingy
+                title="SIA EMJ Metāls"
+                content="My job included managing the incoming and outgoing warehouse orders."
+            />
+            <CollapsableThingy
+                title="B/N Kurši"
+                content="My responsibilities were restocking the shelves."
+            />
+            <CollapsableThingy
+                title="Ulbrokas Middleschool"
+                content="Just cleaning in general. And various other stuff."
+            />
+        </div>
+    </article>
+
+    <article class="animated h-screen w-[min(64rem,100%)] mx-auto">
+        <p class="sm:text-6xl text-4xl font-bold text-text mb-12 ml-8">
+            My projects:
+        </p>
+        <div class="flex flex-col items-center">
+            <CollapsableThingy
+                title="InstaClone"
+                content="My first ever semi-serious project. Written using Python3, Flask, SQLAlchemy"
+                images={[instaClone]}
+            />
+            <CollapsableThingy
+                title="Spaceful"
+                content="A simple warehouse managing app. The technologies used are PHP, Laravel, MySQL, React"
+            />
+            <CollapsableThingy
+                title="TicketTrade"
+                content="My Biggest project to date. The technologies used are PHP, Laravel, Tailwind, MySQL, GoLang"
+            />
+            <CollapsableThingy
+                title="Memquest"
+                content="A web based memory game. The technologies used are PHP, Laravel, Tailwind, MySQL, Vue, Inertia, JavaScript"
+            />
+            <CollapsableThingy
+                title="Goquic"
+                content="A small 2D multiplayer game. The technologies used are Go QUIC, Protobuf, Raylib"
+            />
+            <CollapsableThingy
+                title="MinimumWage"
+                content="My most educational project. The technologies used are Godot Game Engine, SQLite"
+                project
+            />
         </div>
     </article>
 
@@ -170,7 +262,7 @@
     <footer class="animate-fade-in h-[0px]">
         <!-- <p class="sm:text-8xl text-6xl font-bold text-text mb-12 ml-8">Contact Info:</p> -->
         <!-- <div class="grid place-items-center mt-28"> -->
-            <!-- <ContactForm/> -->
+        <!-- <ContactForm/> -->
         <!-- </div> -->
     </footer>
 
@@ -191,15 +283,12 @@
             </div>
         {/if}
     </div> -->
-
-
 </main>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-    
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-    *{
+    * {
         font-family: "Poppins", sans-serif;
         font-style: normal;
         color: "#e0fafe";
@@ -215,7 +304,6 @@
         position: fixed;
         max-width: fit-content;
         z-index: 1;
-
     }
 
     .text-outline {
@@ -226,7 +314,7 @@
         -webkit-text-stroke-width: 0.1rem;
     }
 
-    .fancy-text::before{
+    .fancy-text::before {
         content: attr(data-text);
         position: absolute;
         background-clip: text;
@@ -268,17 +356,17 @@
     } */
 
     .skeleton {
-      padding: 1rem;
-      background-color: #f5f5f5;
+        padding: 1rem;
+        background-color: #f5f5f5;
     }
 
     .skeleton-line {
-      height: 1rem;
-      background-color: #e0e0e0;
-      margin-bottom: 0.5rem;
+        height: 1rem;
+        background-color: #e0e0e0;
+        margin-bottom: 0.5rem;
     }
 
-    .sky-bg{
+    .sky-bg {
         background-image: url("../assets/bg-medium.png");
         background-size: cover;
     }
@@ -290,7 +378,7 @@
     }
 
     @media (prefers-reduced-motion: no-preference) {
-        .animated{
+        .animated {
             /* animation: scroll-anim 0.5s ease-in-out;
             animation-timeline: scroll(); */
             opacity: 0;
@@ -303,5 +391,4 @@
             /* animation: fade-in 1s ease-in-out; */
         }
     }
-
 </style>
