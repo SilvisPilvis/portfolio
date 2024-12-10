@@ -1,15 +1,14 @@
-# Dockerfile
 FROM php:8.2-fpm
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
-git \
-curl \
-libpng-dev \
-libonig-dev \
-libxml2-dev \
-zip \
-unzip
+    git \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip
 
 # Install Bun
 RUN curl -fsSL https://bun.sh/install | bash
@@ -33,9 +32,13 @@ WORKDIR /var/www/html
 COPY . .
 
 # Install dependencies
+RUN composer update
 RUN composer install --optimize-autoloader --no-dev
 RUN bun install
 RUN bun run build
+
+# Run database migrations
+RUN php artisan migrate --force
 
 # Copy existing application directory permissions
 RUN chown -R www-data:www-data /var/www/html
