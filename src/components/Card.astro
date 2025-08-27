@@ -5,112 +5,16 @@ import { Image, getImage } from 'astro:assets';
 
 import { getAverageColor } from 'fast-average-color-node';
 
-// import chroma from 'chroma-js';
-
-// // Function to get dominant color from an image
-// function getDominantColor(imageElement: any) {
-//   // Create a canvas to draw the image
-//   const canvas = document.createElement('canvas');
-//   const ctx = canvas.getContext('2d');
-  
-//   // Set canvas size (smaller for better performance)
-//   const size = 50;
-//   canvas.width = size;
-//   canvas.height = size;
-  
-//   // Draw the image onto the canvas (scaled down)
-//   ctx.drawImage(imageElement, 0, 0, size, size);
-  
-//   // Get pixel data
-//   const imageData = ctx.getImageData(0, 0, size, size);
-//   const pixels = imageData.data;
-  
-//   // Extract RGB values (skip alpha channel)
-//   const colors = [];
-//   for (let i = 0; i < pixels.length; i += 4) {
-//     const r = pixels[i];
-//     const g = pixels[i + 1];
-//     const b = pixels[i + 2];
-//     colors.push([r, g, b]);
-//   }
-  
-//   // Simple method: find average color
-//   const avgColor = colors.reduce(
-//     (acc, color) => [
-//       acc[0] + color[0],
-//       acc[1] + color[1],
-//       acc[2] + color[2]
-//     ],
-//     [0, 0, 0]
-//   ).map(sum => Math.round(sum / colors.length));
-  
-//   // Use chroma-js to create and manipulate the color
-//   return chroma.rgb(avgColor[0], avgColor[1], avgColor[2]);
-// }
-
-// function getDominantColorAdvanced(imageElement, numColors = 5) {
-//   const canvas = document.createElement('canvas');
-//   const ctx = canvas.getContext('2d');
-  
-//   const size = 100;
-//   canvas.width = size;
-//   canvas.height = size;
-  
-//   ctx.drawImage(imageElement, 0, 0, size, size);
-//   const imageData = ctx.getImageData(0, 0, size, size);
-//   const pixels = imageData.data;
-  
-//   // Extract unique colors with their frequency
-//   const colorMap = new Map();
-  
-//   for (let i = 0; i < pixels.length; i += 4) {
-//     const r = pixels[i];
-//     const g = pixels[i + 1];
-//     const b = pixels[i + 2];
-//     const key = `${r},${g},${b}`;
-    
-//     colorMap.set(key, (colorMap.get(key) || 0) + 1);
-//   }
-  
-//   // Sort by frequency and get the most common color
-//   const sortedColors = Array.from(colorMap.entries())
-//     .sort((a, b) => b[1] - a[1])
-//     .slice(0, numColors);
-  
-//   // Return the most frequent color using chroma-js
-//   const dominantRGB = sortedColors[0][0].split(',').map(Number);
-//   return chroma.rgb(dominantRGB[0], dominantRGB[1], dominantRGB[2]);
-// }
-
-// function getDominantColorFromURL(imageUrl: string) {
-//   return new Promise((resolve, reject) => {
-//     const img: Image = new Image();
-//     img.crossOrigin = 'anonymous'; // Handle CORS if needed
-    
-//     img.onload = function() {
-//       try {
-//         const dominantColor = getDominantColor(img);
-//         resolve(dominantColor);
-//       } catch (error) {
-//         reject(error);
-//       }
-//     };
-    
-//     img.onerror = reject;
-//     img.src = imageUrl;
-//   });
-// }
-
 // For public folder images, you might need to handle this differently
 // This approach works better with imported images
 
 const icon = `http://localhost:4321${picture}`;
 const color = await getAverageColor(icon);
-console.log(`Color: ${color.hex}`);
+// console.log(`Color: ${color.hex}`);
 ---
 
-<section class=`text-white flex flex-col items-center justify-center gap-2 bg-gray-900 rounded-md shadow-lg bg-opacity-80 m-4 hover:outline-4 outline-white hover:outline-dashed outline-offset-2`>
-    <a href={link} class=`text-2xl font-bold text-center decoration-[${color.hex}] hover:underline hover:underline-offset-8 hover:decoration-4 underline-blue-50`>{title}</a>
-    <Image src={picture} inferSize={true} width={72} height={72} alt="Technologies" class="min-w-18 min-h-18 max-w-18 max-h-18 rounded-md object-contain" />
+<section style={`--dynamic-decoration-color: ${color.hex};`} class=`text-white flex flex-col items-center justify-center gap-2 bg-gray-900 rounded-md shadow-lg bg-opacity-80 m-4 hover:outline-4 outline-white hover:outline-dashed outline-offset-2`>
+    <a href={link} class=`text-2xl font-bold text-center hover:underline hover:underline-offset-8 hover:decoration-4 decoration-[var(--dynamic-decoration-color)] `>{title}</a>
+    <Image src={picture} inferSize={true} width={72} height={72} alt="Technologies" class="min-w-18 min-h-18 max-w-18 max-h-18 rounded-md object-contain mt-2" />
     <p class="text-center p-4">{description}</p>
 </section>
