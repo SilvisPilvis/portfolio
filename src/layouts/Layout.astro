@@ -1,0 +1,33 @@
+---
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Silvestr's portfolio website" />
+    <title>Portfolio</title>
+    <style>
+      .grid-container {
+        background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0H0v50' fill='none' stroke='%23ccc' stroke-width='1' stroke-dasharray='5,5'/%3E%3C/svg%3E");
+        background-size: 50px 50px;
+      }
+    </style>
+    </head>
+    <!-- <body class="grid-container bg-blue-900 h-screen">
+      <div class="h-full">
+        <Navigation />
+        <slot />
+      </div>
+    </body> -->
+    <body class="grid-container bg-blue-900 h-screen flex flex-col">
+      <Navigation />
+      <div class="flex-1 overflow-auto">
+        <slot />
+      </div>
+    </body>
+</html>

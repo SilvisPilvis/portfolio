@@ -1,0 +1,96 @@
+---
+// src/components/Navbar.astro
+// --- Component Script Section (TypeScript) ---
+
+// Define a type for the loaded page module structure we expect from Astro pages
+// This includes the url and frontmatter provided by Astro
+interface AstroPageModule {
+  url: string; // The resolved URL path for the page (e.g., '/', '/about')
+  frontmatter?: {
+    title?: string; // Optional title defined in the page's frontmatter
+    [key: string]: any; // Allow other potential frontmatter fields
+  };
+  [key: string]: any; // Allow other properties on the module
+}
+
+// Define a type for the intermediate object we create after loading
+interface ProcessedPage {
+  filePath: string;         // The original file path from glob
+  module: AstroPageModule;  // The loaded module with url and frontmatter
+}
+
+// Use Vite's import.meta.glob to get an object representing page modules
+// The value is a function that returns a Promise resolving to the module
+const pageModules: Record<string, () => Promise<unknown>> = import.meta.glob('../pages/**/!(*.ts|*.js)');
+// Note: import.meta.glob returns Record<string, () => Promise<unknown>>
+// We'll refine the type when we load the modules.
+
+// Function to convert kebab-case to Title Case
+const formatTitle = (str: string): string => {
+  return str
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
+---
+
+<style>
+  .grid-container {
+    background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0H0v50' fill='none' stroke='%23ccc' stroke-width='1' stroke-dasharray='5,5'/%3E%3C/svg%3E");
+    background-size: 50px 50px;
+  }
+</style>
+
+<nav class="grid-container bg-blue-900">
+  <ul class="flex flex-row gap-4 items-center justify-between px-4 py-2">
+    {
+      // IIFE (Immediately Invoked Async Function Expression) to handle async loading
+      (async () => {
+        try {
+          // 1. Load all the page modules asynchronously
+          const pageEntries: ProcessedPage[] = await Promise.all(
+            Object.entries(pageModules).map(async ([filePath, loader]) => {
+              // Call the loader function to get the actual module
+              const module = await loader();
+              // Cast the loaded module to our expected AstroPageModule type
+              // This assumes the pages are standard Astro pages providing `url` and potentially `frontmatter`
+              return { filePath, module: module as AstroPageModule };
+            })
+          );
+
+          // 2. Filter and map the loaded modules to list items
+          return pageEntries
+            .filter(({ filePath }) => !filePath.includes('/_')) // Exclude files like _layout, _utils
+            .map(({ filePath, module }) => {
+              // --- Process each loaded page module ---
+              const urlSlug: string = module.url || '/'; // Get the URL, fallback to '/'
+
+              let title: string = 'Home'; // Default title
+
+              // --- Determine the link text (title) ---
+              if (urlSlug === '/') {
+                // Explicitly handle the index page title
+                title = module.frontmatter?.title || 'Home';
+              } else {
+                // For other pages, try frontmatter title, then fallback to filename
+                const fileName = filePath.split('/').pop()?.replace(/\.(astro|md)$/, '') || '';
+                title = module.frontmatter?.title || formatTitle(fileName);
+              }
+
+              // --- Generate the list item ---
+              return (
+                <li  class="font-bold rounded pt-2 px-2 pb-3 hover:underline hover:underline-offset-4 hover:decoration-4">
+                  {/* href="/" is correct for the home page */}
+                  <a href={urlSlug}>{title}</a>
+                </li>
+              );
+            });
+        } catch (error) {
+          // Basic error handling in case module loading fails unexpectedly
+          console.error("Error loading pages for navbar:", error);
+          return <li>Error loading navigation</li>; // Or render nothing: return [];
+        }
+      })()
+    }
+  </ul>
+</nav>
