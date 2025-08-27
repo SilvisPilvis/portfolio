@@ -1,0 +1,34 @@
+---
+// src/pages/books.astro
+import { getCollection } from 'astro:content';
+
+// Fetch all books from the authors collection
+const allBooks = await getCollection('books');
+
+import Layout from '../layouts/Layout.astro';
+const title = 'Books';
+---
+
+<Layout>
+  <main>
+    <p class="text-center text-white text-2xl font-bold">Book Library</p>
+    <p class="pl-4 text-white text-xl">Showing {allBooks.length} books</p>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+      {allBooks.map((book) => (
+        <div class="p-4 bg-gray-900 rounded-md shadow-lg bg-opacity-80 m-4 hover:outline-4 outline-white hover:outline-dashed outline-offset-2">
+          {/* <img
+            class="book-cover"
+            src={`https://covers.openlibrary.org/b/isbn/${book.data.isbn}-M.jpg`}
+            alt={`Cover of ${book.data.title}`}
+            onError={(e) => {
+              e.target.src = '/placeholder-book-cover.png';
+              e.target.alt = 'Cover not available';
+            }}
+          /> */}
+          <div class="text-center text-white p-4 text-xl font-bold">{book.data.title}</div>
+          <div class="text-white">by {book.data.author}</div>
+        </div>
+      ))}
+    </div>
+  </main>
+</Layout>

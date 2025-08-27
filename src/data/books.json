@@ -1,0 +1,764 @@
+[
+  {
+    "id": 0,
+    "author": "Homer",
+    "title": "The Odyssey",
+    "isbn": "9780141192444"
+  },
+  {
+    "id": 1,
+    "author": "Sui Ishida\n",
+    "title": "Tokyo Ghoul Zakki - Artbook\n",
+    "isbn": "9782889214433\n"
+  },
+  {
+    "id": 2,
+    "author": "James Clavell\n",
+    "title": "Shogun\n",
+    "isbn": "9780340766163\n"
+  },
+  {
+    "id": 3,
+    "author": "Margaret Rogerson\n",
+    "title": "Sorcery of Thorns\n",
+    "isbn": "9781481497626\n"
+  },
+  {
+    "id": 4,
+    "author": "Taskohna\n",
+    "title": "FATE / STAY NIGHT HEAVEN''S FEEL 01\n",
+    "isbn": "9788416703739\n"
+  },
+  {
+    "id": 5,
+    "author": "TYPE-MOON\n",
+    "title": "Today''s Menu for the Emiya Family, Volume 5\n",
+    "isbn": "9781634429900\n"
+  },
+  {
+    "id": 6,
+    "author": "Shiramine\n",
+    "title": "Fate/Grand Order -mortalis:stella- 3 (Manga)\n",
+    "isbn": "9781646513604\n"
+  },
+  {
+    "id": 7,
+    "author": "TYPE-MOON\n",
+    "title": "Today''s Menu for the Emiya Family, Volume 3\n",
+    "isbn": "9781634429504\n"
+  },
+  {
+    "id": 8,
+    "author": "Type-Moon\n",
+    "title": "Today''s Menu for the Emiya Family, Volume 2\n",
+    "isbn": "9781634429382\n"
+  },
+  {
+    "id": 9,
+    "author": "Type-Moon\n",
+    "title": "Today''s Menu for the Emiya Family, Volume 1\n",
+    "isbn": "9781634429368\n"
+  },
+  {
+    "id": 10,
+    "author": "Shiramine\n",
+    "title": "Fate/grand Order -mortalis:stella- 1 (manga)\n",
+    "isbn": "9781632368843\n"
+  },
+  {
+    "id": 11,
+    "author": "Shiramine\n",
+    "title": "Fate/Grand Order -mortalis:stella- 2 (Manga)\n",
+    "isbn": "9781632369079\n"
+  },
+  {
+    "id": 12,
+    "author": "Genevieve Gornichec\n",
+    "title": "The Witch''s Heart\n",
+    "isbn": "9781789097061\n"
+  },
+  {
+    "id": 13,
+    "author": "Nicole Rousmaniere\n",
+    "title": "The Citi Exhibition: Manga マンガ\n",
+    "isbn": "9780500480496\n"
+  },
+  {
+    "id": 14,
+    "author": "Hirohiko Araki\n",
+    "title": "Manga in Theory and Practice\n",
+    "isbn": "9781421594071\n"
+  },
+  {
+    "id": 15,
+    "author": "Markus Zusak\n",
+    "title": "The Book Thief\n",
+    "isbn": "9780552779739\n"
+  },
+  {
+    "id": 16,
+    "author": "Khaled Hosseini\n",
+    "title": "The Kite Runner\n",
+    "isbn": "9781526604736\n"
+  },
+  {
+    "id": 17,
+    "author": "Garth Stein\n",
+    "title": "The Art of Racing in the Rain\n",
+    "isbn": "9780007281190\n"
+  },
+  {
+    "id": 18,
+    "author": "S E Hinton\n",
+    "title": "The Outsiders\n",
+    "isbn": "9780141368887\n"
+  },
+  {
+    "id": 19,
+    "author": "Ken Kesey\n",
+    "title": "One Flew Over the Cuckoo''s Nest\n",
+    "isbn": "9780451163967\n"
+  },
+  {
+    "id": 20,
+    "author": "Mr John Steinbeck\n",
+    "title": "Of Mice and Men\n",
+    "isbn": "9780141023571\n"
+  },
+  {
+    "id": 21,
+    "author": "Stephen King\n",
+    "title": "The Green Mile\n",
+    "isbn": "9780575084346\n"
+  },
+  {
+    "id": 22,
+    "author": "Khaled Hosseini\n",
+    "title": "A Thousand Splendid Suns\n",
+    "isbn": "9781594483073\n"
+  },
+  {
+    "id": 23,
+    "author": "Christelle Dabos\n",
+    "title": "The Missing of Clairdelune\n",
+    "isbn": "9781787702257\n"
+  },
+  {
+    "id": 24,
+    "author": "Faridah AbikeIyimide\n",
+    "title": "Ace of Spades\n",
+    "isbn": "9781474967532\n"
+  },
+  {
+    "id": 25,
+    "author": "Christelle Dabos\n",
+    "title": "The Memory of Babel\n",
+    "isbn": "9781787703087\n"
+  },
+  {
+    "id": 26,
+    "author": "Kiersten White\n",
+    "title": "The Guinevere Deception\n",
+    "isbn": "9780593123836\n"
+  },
+  {
+    "id": 27,
+    "author": "Kazuo Ishiguro\n",
+    "title": "Klara and the Sun\n",
+    "isbn": "9780571364879\n"
+  },
+  {
+    "id": 28,
+    "author": "Genevieve Cogman\n",
+    "title": "The Dark Archive\n",
+    "isbn": "9781529000603\n"
+  },
+  {
+    "id": 29,
+    "author": "Jay Kristoff\n",
+    "title": "Empire of the Vampire\n",
+    "isbn": "9780008350437\n"
+  },
+  {
+    "id": 30,
+    "author": "Tj Klune\n",
+    "title": "The House in the Cerulean Sea\n",
+    "isbn": "9781250217318\n"
+  },
+  {
+    "id": 31,
+    "author": "Neil Bradbury\n",
+    "title": "A Taste for Poison\n",
+    "isbn": "9780008484552\n"
+  },
+  {
+    "id": 32,
+    "author": "Osamu Dazai\n",
+    "title": "No Longer Human\n",
+    "isbn": "9780811204811\n"
+  },
+  {
+    "id": 33,
+    "author": "Ryo Yasohachi\n",
+    "title": "Immortal Hounds 6\n",
+    "isbn": "9781945054570\n"
+  },
+  {
+    "id": 34,
+    "author": "Naoshi Komi\n",
+    "title": "Nisekoi: False Love, Vol. 1\n",
+    "isbn": "9781421557991\n"
+  },
+  {
+    "id": 35,
+    "author": "NisiOisiN\n",
+    "title": "Katanagatari 1\n",
+    "isbn": "9781947194328\n"
+  },
+  {
+    "id": 36,
+    "author": "Yoru Sumino\n",
+    "title": "I Had That Same Dream Again (Light Novel)\n",
+    "isbn": "9781645054399\n"
+  },
+  {
+    "id": 37,
+    "author": "Yoru Sumino\n",
+    "title": "At Night, I Become a Monster (Light Novel)\n",
+    "isbn": "9781645052975\n"
+  },
+  {
+    "id": 38,
+    "author": "Sayaka Vol. 3\n",
+    "title": "Bloom Into You (Light Novel): Regarding Saeki\n",
+    "isbn": "9781645057277\n"
+  },
+  {
+    "id": 39,
+    "author": "Voices of a Distant Star\n",
+    "title": "9781947194663\n",
+    "isbn": "Hitoma Iruma\n"
+  },
+  {
+    "id": 40,
+    "author": "your name. Another Side: Earthbound. Vol. 2 (manga)\n",
+    "title": "9781975359638\n",
+    "isbn": "Makoto Shinkai\n"
+  },
+  {
+    "id": 41,
+    "author": "Children Who Chase Lost Voices from Deep Below + 5 Centimeters per Second\n",
+    "title": "9781975315696\n",
+    "isbn": "Makoto Shinkai\n"
+  },
+  {
+    "id": 42,
+    "author": "The Garden of Words\n",
+    "title": "9781975315672\n",
+    "isbn": "Makoto Shinkai\n"
+  },
+  {
+    "id": 43,
+    "author": "The Place Promised in Our Early Days\n",
+    "title": "9781975318697\n",
+    "isbn": "Makoto Shinkai\n"
+  },
+  {
+    "id": 44,
+    "author": "your name. (light novel)\n",
+    "title": "9780316471862\n",
+    "isbn": "Makoto Shinkai\n"
+  },
+  {
+    "id": 45,
+    "author": "A Silent Voice 1\n",
+    "title": "9781632360564\n",
+    "isbn": "Makoto Shinkai\n"
+  },
+  {
+    "id": 46,
+    "author": "Makoto Shinkai\n",
+    "title": "your name., Vol. 1\n",
+    "isbn": "9780316558556\n"
+  },
+  {
+    "id": 47,
+    "author": "Makoto Shinkai\n",
+    "title": "5 Centimeters Per Second: One More Side\n",
+    "isbn": "9781947194090\n"
+  },
+  {
+    "id": 48,
+    "author": "Makoto Shinkai\n",
+    "title": "5 Centimeters Per Second\n",
+    "isbn": "9781932234961\n"
+  },
+  {
+    "id": 49,
+    "author": "Makoto Shinkai\n",
+    "title": "Weathering With You\n",
+    "isbn": "9781975399368\n"
+  },
+  {
+    "id": 50,
+    "author": "Alexandre Dumas\n",
+    "title": "The Count of Monte Cristo\n",
+    "isbn": "9780141392462\n"
+  },
+  {
+    "id": 51,
+    "author": "Miyuki Ruria\n",
+    "title": "Reign of the Seven Spellblades, Vol. 1 (light novel)\n",
+    "isbn": "9781975317195\n"
+  },
+  {
+    "id": 52,
+    "author": "Kendare Blake\n",
+    "title": "Three Dark Crowns\n",
+    "isbn": "9781509804559\n"
+  },
+  {
+    "id": 53,
+    "author": "Andrzej Sapkowski\n",
+    "title": "Season of Storms\n",
+    "isbn": "9781473231139\n"
+  },
+  {
+    "id": 54,
+    "author": "Andrzej Sapkowski\n",
+    "title": "The Lady of the Lake\n",
+    "isbn": "9781473231122\n"
+  },
+  {
+    "id": 55,
+    "author": "Adachitoka\n",
+    "title": "Noragami: Stray God 23\n",
+    "isbn": "9781646512348\n"
+  },
+  {
+    "id": 56,
+    "author": "Adachitoka\n",
+    "title": "Noragami: Stray God 22\n",
+    "isbn": "9781632369918\n"
+  },
+  {
+    "id": 57,
+    "author": "Adachitoka\n",
+    "title": "Noragami: Stray God 21\n",
+    "isbn": "9781632368492\n"
+  },
+  {
+    "id": 58,
+    "author": "Nisioisin\n",
+    "title": "Nekomonogatari (white)\n",
+    "isbn": "9781945054495\n"
+  },
+  {
+    "id": 59,
+    "author": "Kendare Blake\n",
+    "title": "Queens of Fennbirn\n",
+    "isbn": "9781509880614\n"
+  },
+  {
+    "id": 60,
+    "author": "V. E. Schwab\n",
+    "title": "A Gathering of Shadows\n",
+    "isbn": "9781783295425\n"
+  },
+  {
+    "id": 61,
+    "author": "Brigid Kemmerer\n",
+    "title": "A Curse So Dark and Lonely\n",
+    "isbn": "9781408884614\n"
+  },
+  {
+    "id": 62,
+    "author": "Holly Black\n",
+    "title": "The Cruel Prince (The Folk of the Air)\n",
+    "isbn": "9781471407277\n"
+  },
+  {
+    "id": 63,
+    "author": "Holly Black\n",
+    "title": "The Queen of Nothing (The Folk of the Air #3)\n",
+    "isbn": "9781471407598\n"
+  },
+  {
+    "id": 64,
+    "author": "Holly Black\n",
+    "title": "The Wicked King (The Folk of the Air #2)\n",
+    "isbn": "9781471407369\n"
+  },
+  {
+    "id": 65,
+    "author": "Colleen Hoover\n",
+    "title": "It Ends With Us: The most heartbreaking novel you''ll ever read\n",
+    "isbn": "9781471156267\n"
+  },
+  {
+    "id": 66,
+    "author": "J. R. R. Tolkien\n",
+    "title": "The Lord of the Rings\n",
+    "isbn": "9780261102385\n"
+  },
+  {
+    "id": 67,
+    "author": "Adrienne Young\n",
+    "title": "Fable\n",
+    "isbn": "9781789094558\n"
+  },
+  {
+    "id": 68,
+    "author": "Leigh Bardugo\n",
+    "title": "The Language of Thorns\n",
+    "isbn": "9781250122520\n"
+  },
+  {
+    "id": 69,
+    "author": "Claire Legrand\n",
+    "title": "Furyborn\n",
+    "isbn": "9781492656623\n"
+  },
+  {
+    "id": 70,
+    "author": "Nina Varela\n",
+    "title": "Crier''s War\n",
+    "isbn": "9780062823953\n"
+  },
+  {
+    "id": 71,
+    "author": "Margaret Owen\n",
+    "title": "Little Thieves\n",
+    "isbn": "9781250191908\n"
+  },
+  {
+    "id": 72,
+    "author": "Dana Swift\n",
+    "title": "Cast in Firelight\n",
+    "isbn": "9780593124246\n"
+  },
+  {
+    "id": 73,
+    "author": "Richard Swan\n",
+    "title": "The Justice of Kings\n",
+    "isbn": "9780356516400\n"
+  },
+  {
+    "id": 74,
+    "author": "John Gwynne\n",
+    "title": "The Shadow of the Gods\n",
+    "isbn": "9780356514215\n"
+  },
+  {
+    "id": 75,
+    "author": "Brandon Sanderson\n",
+    "title": "The Way of Kings Part One\n",
+    "isbn": "9780575097360\n"
+  },
+  {
+    "id": 76,
+    "author": "Victoria Aveyard\n",
+    "title": "Glass Sword\n",
+    "isbn": "9781409150749\n"
+  },
+  {
+    "id": 77,
+    "author": "Victoria Aveyard\n",
+    "title": "Realm Breaker\n",
+    "isbn": "9781409193975\n"
+  },
+  {
+    "id": 78,
+    "author": "Raven Kennedy\n",
+    "title": "Gild\n",
+    "isbn": "9781405955003\n"
+  },
+  {
+    "id": 79,
+    "author": "Holly Black\n",
+    "title": "How the King of Elfhame Learned to Hate Stories (The Folk of the Air series)\n",
+    "isbn": "9781471409981\n"
+  },
+  {
+    "id": 80,
+    "author": "Matsuri Isora\n",
+    "title": "Silent Witch, Vol. 1\n",
+    "isbn": "9781975347802\n"
+  },
+  {
+    "id": 81,
+    "author": "Mei Hachimoku\n",
+    "title": "Wait For Me Yesterday in Spring (Light Novel)\n",
+    "isbn": "9781638584094\n"
+  },
+  {
+    "id": 82,
+    "author": "Travis Baldree\n",
+    "title": "Legends \u0026 Lattes\n",
+    "isbn": "9781250886088\n"
+  },
+  {
+    "id": 83,
+    "author": "Keishi Ayasato\n",
+    "title": "Torture Princess: Fremd Torturchen, Vol. 1 (light novel)\n",
+    "isbn": "9781975304690\n"
+  },
+  {
+    "id": 84,
+    "author": "Brigid Kemmerer\n",
+    "title": "A Curse So Dark and Lonely\n",
+    "isbn": "9781681195087\n"
+  },
+  {
+    "id": 85,
+    "author": "Brigid Kemmerer\n",
+    "title": "A Vow So Bold and Deadly\n",
+    "isbn": "9781526613820\n"
+  },
+  {
+    "id": 86,
+    "author": "Claire Legrand\n",
+    "title": "Lightbringer\n",
+    "isbn": "9781492656685\n"
+  },
+  {
+    "id": 87,
+    "author": "Claire Legrand\n",
+    "title": "Kingsbane\n",
+    "isbn": "9781492656654\n"
+  },
+  {
+    "id": 88,
+    "author": "Andrea Stewart\n",
+    "title": "The Bone Shard Daughter\n",
+    "isbn": "9780356514949\n"
+  },
+  {
+    "id": 89,
+    "author": "Lexi Ryan\n",
+    "title": "These Hollow Vows\n",
+    "isbn": "9781529376951\n"
+  },
+  {
+    "id": 90,
+    "author": "Elizabeth Knox\n",
+    "title": "The Absolute Book\n",
+    "isbn": "9781405947244\n"
+  },
+  {
+    "id": 91,
+    "author": "Marissa Meyer\n",
+    "title": "Wires and Nerve\n",
+    "isbn": "9781250078261\n"
+  },
+  {
+    "id": 92,
+    "author": "Danielle L. Jensen\n",
+    "title": "The Traitor Queen\n",
+    "isbn": "9781733090360\n"
+  },
+  {
+    "id": 93,
+    "author": "Carissa Broadbent\n",
+    "title": "The Ashes and the Star-Cursed King\n",
+    "isbn": "9781957779072\n"
+  },
+  {
+    "id": 94,
+    "author": "Pierce Brown\n",
+    "title": "Light Bringer\n",
+    "isbn": "9781473646803\n"
+  },
+  {
+    "id": 95,
+    "author": "Mary E. Pearson\n",
+    "title": "Vow of Thieves\n",
+    "isbn": "9781250162656\n"
+  },
+  {
+    "id": 96,
+    "author": "Cassandra Clare\n",
+    "title": "Lord of Shadows\n",
+    "isbn": "9781442468405\n"
+  },
+  {
+    "id": 97,
+    "author": "Sarah J. Maas\n",
+    "title": "House of Earth and Blood\n",
+    "isbn": "9781635574043\n"
+  },
+  {
+    "id": 98,
+    "author": "Matsuba Ryoko\n",
+    "title": "The Citi Exhibition: Manga マンガ\n",
+    "isbn": "9780500480496\n"
+  },
+  {
+    "id": 99,
+    "author": "Asato Asato",
+    "title": "86 - EIGHTY SIX Vol. 5",
+    "isbn": "9781975399252"
+  },
+  {
+    "id": 100,
+    "author": "Asato Asato",
+    "title": "86 -- Eighty-Six Vol. 6 (light novel)",
+    "isbn": "9781975314514"
+  },
+  {
+    "id": 101,
+    "author": "Asato Asato",
+    "title": "86--EIGHTY-SIX Vol. 7 (light novel)",
+    "isbn": "9781975320744"
+  },
+  {
+    "id": 102,
+    "author": "Isuna Hasekura",
+    "title": "Wolf \u0026 Parchment: New Theory Spice \u0026 Wolf Vol. 5 (light novel)",
+    "isbn": "9781975321727"
+  },
+  {
+    "id": 103,
+    "author": "Keishi Ayasato",
+    "title": "Torture Princess: Fremd Torturchen Vol. 7 (light novel)",
+    "isbn": "9781975321840"
+  },
+  {
+    "id": 104,
+    "author": "Usata Nonohara",
+    "title": "The Alchemist Who Survived Now Dreams of a Quiet City Life Vol. 6 (light novel)",
+    "isbn": "9781975314798"
+  },
+  {
+    "id": 105,
+    "author": "Inumajin",
+    "title": "Woof Woof Story: I Told You to Turn Me Into a Pampered Pooch Not Fenrir! Vol. 6 (light novel)",
+    "isbn": "9781975320362"
+  },
+  {
+    "id": 106,
+    "author": "Tsukikage",
+    "title": "Defeating the Demon Lord''s a Cinch (If You''ve Got a Ringer) Vol. 4",
+    "isbn": "9781975303921"
+  },
+  {
+    "id": 107,
+    "author": "Sakuma Sasaki",
+    "title": "The Dirty Way to Destroy the Goddess''s Hero Vol. 1 (light novel)",
+    "isbn": "9781975357115"
+  },
+  {
+    "id": 108,
+    "author": "Akira Kareno",
+    "title": "WorldEnd Vol. 3",
+    "isbn": "9781975326913"
+  },
+  {
+    "id": 109,
+    "author": "Keito Koume",
+    "title": "Keito Koume Illustrations Spice \u0026 Wolf: The Tenth Year Calvados",
+    "isbn": "9781975315795"
+  },
+  {
+    "id": 110,
+    "author": "Isuna Hasekura",
+    "title": "Spice and Wolf Anniversary Collector''s Edition (Numbered Edition)",
+    "isbn": "9780316504010"
+  },
+  {
+    "id": 111,
+    "author": "Nisioisin",
+    "title": "Nekomonogatari (black)",
+    "isbn": "9781945054488"
+  },
+  {
+    "id": 112,
+    "author": "Carlo Zen",
+    "title": "The Saga of Tanya the Evil Vol. 1 (light novel)",
+    "isbn": "9780316512442"
+  },
+  {
+    "id": 113,
+    "author": "Hajime Kamoshida",
+    "title": "Rascal Does Not Dream of Logical Witch (light novel)",
+    "isbn": "9781975312565"
+  },
+  {
+    "id": 114,
+    "author": "Sugaru Miaki",
+    "title": "Three Days of Happiness",
+    "isbn": "9781975314217"
+  },
+  {
+    "id": 115,
+    "author": "Yoru Sumino",
+    "title": "I Want to Eat Your Pancreas (Light Novel)",
+    "isbn": "9781642750331"
+  },
+  {
+    "id": 116,
+    "author": "Chirolu",
+    "title": "If It''s for My Daughter I''d Even Defeat a Demon Lord: Volume 1",
+    "isbn": "9781718353008"
+  },
+  {
+    "id": 117,
+    "author": "Leigh Bardugo",
+    "title": "The Shadow and Bone: Ruin and Rising",
+    "isbn": "9781510105256"
+  },
+  {
+    "id": 118,
+    "author": "Kuji Furumiya",
+    "title": "Unnamed Memory Vol. 1 (light novel)",
+    "isbn": "9781975317096"
+  },
+  {
+    "id": 119,
+    "author": "Rainbow Rowell",
+    "title": "Fangirl Vol. 1",
+    "isbn": "9781974715879"
+  },
+  {
+    "id": 120,
+    "author": "Svetlana Chmakova",
+    "title": "Nightschool: The Weirn Books Collector''s Edition Vol. 1",
+    "isbn": "9781975312893"
+  },
+  {
+    "id": 121,
+    "author": "Brandon Sanderson",
+    "title": "Stormlight Archive MM Boxed Set I Books 1-3",
+    "isbn": "9781250776631"
+  },
+  {
+    "id": 122,
+    "author": "Brandon Sanderson",
+    "title": "Oathbringer Part Two",
+    "isbn": "9780575093379"
+  },
+  {
+    "id": 123,
+    "author": "Brandon Sanderson",
+    "title": "Oathbringer Part One",
+    "isbn": "9780575093362"
+  },
+  {
+    "id": 124,
+    "author": "Andrzej Sapkowski",
+    "title": "The Tower of Fools",
+    "isbn": "9781473226142"
+  },
+  {
+    "id": 125,
+    "author": "Homer",
+    "title": "The Iliad",
+    "isbn": "9780141394657"
+  },
+  {
+    "id": 126,
+    "author": "Kivirehks Andruss",
+    "title": "Vīrs kurš zināja čūsku vārdus",
+    "isbn": "9789934290503"
+  }
+]
