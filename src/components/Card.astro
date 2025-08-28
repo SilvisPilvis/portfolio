@@ -32,6 +32,7 @@ if (picture) {
     const path = `../../public${picture}`;
     const filePath = new URL(path, import.meta.url);
     // const filePath = path;
+    console.log(`Reading: ${filePath}`);
     contents = await readFile(filePath, { encoding: 'utf8' });
   } catch (err) {
     console.error(err.message);
