@@ -25,15 +25,18 @@ import { readFile } from 'node:fs/promises';
 // const color = await getAverageColor(buffer);
 
 let contents;
-try {
-  // const filePath = new URL('./package.json', import.meta.url);
-  // const contents = await readFile(filePath, { encoding: 'utf8' });
-  const path = `../../public${picture}`;
-  // const filePath = new URL(path, import.meta.url);
-  const filePath = path;
-  contents = await readFile(filePath, { encoding: 'utf8' });
-} catch (err) {
-  console.error(err.message);
+if (picture) {
+  try {
+    // const filePath = new URL('./package.json', import.meta.url);
+    // const contents = await readFile(filePath, { encoding: 'utf8' });
+    const path = `../../public${picture}`;
+    const filePath = new URL(path, import.meta.url);
+    // const filePath = path;
+    contents = await readFile(filePath, { encoding: 'utf8' });
+  } catch (err) {
+    console.error(err.message);
+  }
+
 }
 
 const color = await getAverageColor(contents);
