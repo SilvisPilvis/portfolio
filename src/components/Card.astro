@@ -24,12 +24,13 @@ import { readFile } from 'node:fs/promises';
 // const buffer = Buffer.from(arrbuf);
 // const color = await getAverageColor(buffer);
 
+let contents;
 try {
   // const filePath = new URL('./package.json', import.meta.url);
   // const contents = await readFile(filePath, { encoding: 'utf8' });
   const path = `../../public${picture}`;
   const filePath = new URL(path, import.meta.url);
-  const contents = await readFile(filePath, { encoding: 'utf8' });
+  contents = await readFile(filePath, { encoding: 'utf8' });
 } catch (err) {
   console.error(err.message);
 }
