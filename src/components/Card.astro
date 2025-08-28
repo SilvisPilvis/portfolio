@@ -7,9 +7,22 @@ import { getAverageColor } from 'fast-average-color-node';
 
 // For public folder images, you might need to handle this differently
 // This approach works better with imported images
+// This fetches images during build-time
+// const icon = `http://localhost:4321`;
 
-const icon = `http://localhost:4321${picture}`;
-const color = await getAverageColor(icon);
+// Instead read image to buffer
+// Path to the icon
+const path = `../../public${picture}`;
+// Read file to BunFile
+const file = Bun.file(path);
+
+// Convert BunFile to ArrayBuffer
+const arrbuf = await file.arrayBuffer();
+// Consume ArrayBuffer and convert to buffer
+const buffer = Buffer.from(arrbuf);
+
+const color = await getAverageColor(buffer);
+//const color = await getAverageColor(icon);
 // console.log(`Color: ${color.hex}`);
 ---
 
