@@ -35,7 +35,7 @@ if (picture) {
     // const filePath = path;
     const rel = picture.startsWith('/') ? picture.slice(1) : picture;
     const absolute = path.join(process.cwd(), 'public', rel);
-    console.log(`Reading: ${filePath}`);
+    console.log(`Reading: ${absolute}`);
     contents = await readFile(absolute);
   } catch (err) {
     console.error(err.message);
