@@ -29,8 +29,8 @@ jobs:
         # env:
           # PUBLIC_POKEAPI: 'https://pokeapi.co/api/v2' # Use single quotation marks for the variable value. (optional)
 
-      - name: Add .nojekyll
-        run: touch dist/.nojekyll
+        - name: Add .nojekyll
+          run: touch dist/.nojekyll
 
   deploy:
     needs: build
