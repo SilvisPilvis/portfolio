@@ -28,7 +28,8 @@ try {
   // const filePath = new URL('./package.json', import.meta.url);
   // const contents = await readFile(filePath, { encoding: 'utf8' });
   const path = `../../public${picture}`;
-  const contents = await readFile(path, { encoding: 'utf8' });
+  const filePath = new URL(path, import.meta.url);
+  const contents = await readFile(filePath, { encoding: 'utf8' });
   console.log(contents);
 } catch (err) {
   console.error(err.message);
