@@ -30,13 +30,12 @@ try {
   const path = `../../public${picture}`;
   const filePath = new URL(path, import.meta.url);
   const contents = await readFile(filePath, { encoding: 'utf8' });
-  console.log(contents);
 } catch (err) {
   console.error(err.message);
 }
 
 const color = await getAverageColor(contents);
-//const color = await getAverageColor(icon);
+// const color = await getAverageColor(icon);
 // console.log(`Color: ${color.hex}`);
 ---
 
