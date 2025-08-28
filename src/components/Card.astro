@@ -5,23 +5,36 @@ import { Image, getImage } from 'astro:assets';
 
 import { getAverageColor } from 'fast-average-color-node';
 
+import { readFile } from 'node:fs/promises';
+
 // For public folder images, you might need to handle this differently
 // This approach works better with imported images
 // This fetches images during build-time
 // const icon = `http://localhost:4321`;
 
+// --- Needs to run on bun otherwise will fail. I.e. when building, cuz runs on browser.
 // Instead read image to buffer
 // Path to the icon
-const path = `../../public${picture}`;
+// const path = `../../public${picture}`;
 // Read file to BunFile
-const file = Bun.file(path);
-
+// const file = Bun.file(path);
 // Convert BunFile to ArrayBuffer
-const arrbuf = await file.arrayBuffer();
+// const arrbuf = await file.arrayBuffer();
 // Consume ArrayBuffer and convert to buffer
-const buffer = Buffer.from(arrbuf);
+// const buffer = Buffer.from(arrbuf);
+// const color = await getAverageColor(buffer);
 
-const color = await getAverageColor(buffer);
+try {
+  // const filePath = new URL('./package.json', import.meta.url);
+  // const contents = await readFile(filePath, { encoding: 'utf8' });
+  const path = `../../public${picture}`;
+  const contents = await readFile(path, { encoding: 'utf8' });
+  console.log(contents);
+} catch (err) {
+  console.error(err.message);
+}
+
+const color = await getAverageColor(contents);
 //const color = await getAverageColor(icon);
 // console.log(`Color: ${color.hex}`);
 ---
