@@ -29,7 +29,7 @@ if (picture) {
   try {
     // const filePath = new URL('./package.json', import.meta.url);
     // const contents = await readFile(filePath, { encoding: 'utf8' });
-    const path = `/public${picture}`;
+    const path = `public${picture}`;
     const filePath = new URL(path, import.meta.url);
     // const filePath = path;
     console.log(`Reading: ${filePath}`);
