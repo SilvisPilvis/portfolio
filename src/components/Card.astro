@@ -6,6 +6,7 @@ import { Image, getImage } from 'astro:assets';
 import { getAverageColor } from 'fast-average-color-node';
 
 import { readFile } from 'node:fs/promises';
+import path from "path";
 
 // For public folder images, you might need to handle this differently
 // This approach works better with imported images
@@ -29,11 +30,13 @@ if (picture) {
   try {
     // const filePath = new URL('./package.json', import.meta.url);
     // const contents = await readFile(filePath, { encoding: 'utf8' });
-    const path = `public${picture}`;
-    const filePath = new URL(path, import.meta.url);
+    // const path = `public${picture}`;
+    // const filePath = new URL(path, import.meta.url);
     // const filePath = path;
+    const rel = picture.startsWith('/') ? picture.slice(1) : picture;
+    const absolute = path.join(process.cwd(), 'public', rel);
     console.log(`Reading: ${filePath}`);
-    contents = await readFile(filePath, { encoding: 'utf8' });
+    contents = await readFile(absolute);
   } catch (err) {
     console.error(err.message);
   }
