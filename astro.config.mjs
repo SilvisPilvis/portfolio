@@ -15,5 +15,6 @@ export default defineConfig({
     title: 'My Portfolio',
     favicon: '/favicon.svg',
   })],
-  site: 'https://silvispilvis.github.io/portfolio/'
+  site: 'https://silvispilvis.github.io/portfolio/',
+  base: '/portfolio'
 });
