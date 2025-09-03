@@ -1,0 +1,39 @@
+---
+const { name, picture, description} = Astro.props;
+import Layout from '../layouts/Layout.astro';
+
+import { Image, getImage } from 'astro:assets';
+
+const kebabCase = (str: string): string => {
+  // First, normalize and replace non-ASCII characters
+  const normalizedStr = str
+    .normalize('NFD') // Decompose characters into base + diacritics
+    .replace(/[\u0300-\u036f]/g, '') // Remove diacritical marks
+    .replace(/[^a-zA-Z0-9\s]/g, '') // Remove any remaining non-alphanumeric characters
+    .replace(/[^\x00-\x7F]/g, (char) => {
+      // Custom replacements for common non-ASCII characters
+      const replacements: Record<string, string> = {
+        'æ': 'ae', 'œ': 'oe', 'ß': 'ss', 'ø': 'o', 'å': 'a',
+        'ä': 'a', 'ö': 'o', 'ü': 'u', 'ñ': 'n', 'ç': 'c',
+        'š': 's', 'č': 'c', 'ć': 'c', 'đ': 'd', 'ł': 'l',
+        'ż': 'z', 'ź': 'z', 'ą': 'a', 'ę': 'e', 'ė': 'e'
+      };
+      return replacements[char] || '';
+    });
+
+  // Then apply the original kebab case logic
+  const matches = normalizedStr.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g);
+  
+  if (!matches) {
+    return '';
+  }
+  
+  return matches.join('-').toLowerCase();
+};
+---
+
+<main class="text-white flex flex-col items-center justify-center gap-2 bg-gray-900 rounded-md shadow-lg bg-opacity-80 m-4 hover:outline-4 outline-white hover:outline-dashed outline-offset-2">
+    <a href=`/projects/${kebabCase(name)}` class="text-4xl font-bold text-center hover:underline hover:underline-offset-8 hover:decoration-4 decoration-[var(--dynamic-decoration-color)] py-2">{name}</a>
+    <Image src={picture} inferSize={true} width={512} height={512} loading={"lazy"} alt={`${name} Picture`} class="rounded-md object-contain" />
+    <p class="text-center p-4 text-2xl">{description}</p>
+</main>

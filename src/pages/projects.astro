@@ -1,10 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import UnderConstruction from '../components/UnderConstruction.astro';
+// import UnderConstruction from '../components/UnderConstruction.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 
 const title = 'Jobs';
 ---
 
-<Layout>
-    <UnderConstruction />
+<Layout title={title}>
+    <!-- <UnderConstruction /> -->
+     <main>
+         <ProjectCard name="Ruckas Muiža" picture="/projects/ruckas-muiza.png" description="A website for Ruckas Muiža, a local piece of history in Cesis, standing proudly since 1577, has survived a fire and has been renovated and restored by the new owners a few years back. This website was built by me and 5 other developers." />
+         <ProjectCard name="Minimum Wage" picture="/projects/minimum-wage.png" description="A simple game made in Godot, where you work in an Minimum Wage office job and you need to get to the top of the office to the 10th floor to face your boss." />
+         <ProjectCard name="Memquest" picture="/projects/memquest.png" description="A simple game made in Godot, where you work in an Minimum Wage office job and you need to get to the top of the office to the 10th floor to face your boss." />
+         <ProjectCard name="Go File" picture="/projects/go-file.png" description="A simple game made in Godot, where you work in an Minimum Wage office job and you need to get to the top of the office to the 10th floor to face your boss." />
+         <ProjectCard name="Rusty Receipt Gen" picture="/projects/rusty-receipt-gen.png" description="An dataset generator made in Rust for the SROIE dataset but for data in Latvian language." />
+     </main>
 </Layout>

@@ -13,4 +13,27 @@ const books = defineCollection({
     }),
 });
 
-export const collections = { books };
+let date = new Date();
+let month = date.getMonth() + 1;
+let year = date.getFullYear();
+
+const schedule = defineCollection({
+    /* Retrieve all book entries from a JSON file. */
+    loader: file(`src/data/schedule-${month}-${year}.json`),
+    schema: z.array(
+      z.object({
+      id: z.number(),
+      date: z.string(),
+      activities: z.array(z.object({
+        activity: z.string(),
+        start: z.string(),
+        end: z.string(),
+        duration: z.number(),
+        pay: z.number(),
+      })),
+      weekend: z.boolean(),
+    })
+    )
+    });
+
+export const collections = { books, schedule };

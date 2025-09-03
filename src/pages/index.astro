@@ -1,11 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+// import Me from '../../public/me.jpg';
+import Me from '../../public/picture.jpg';
+
+const title = '';
 ---
 
-<Layout>
-  <main class="flex flex-col justify-center items-center gap-4 p-4 h-full">
-    <p>Hello, I'm Silvestrs, a Full-stack developer</p>
-    <p>A developer with a passion for security and self improvement</p>
-    <button type="submit" class="font-bold rounded border-2 border-white pt-2 px-2 pb-3 hover:underline hover:underline-offset-4 hover:decoration-4 mt-auto">Contact me</button>
+<Layout title={title}>
+  <main class="h-full flex flex-row justify-center items-center gap-4 p-4">
+    <div class="flex flex-row gap-4 justify-between p-8">
+      <div class="flex flex-row gap-4 rounded-md outline-4 outline-white outline-dashed outline-offset-2">
+        <div class="">
+          <img src={Me.src} alt="My Picture" class="rounded-md h-128" />
+        </div>
+
+        <div class="flex flex-col gap-16 justify-center items-center w-2/3 p-4">
+          <p class="text-white text-4xl">Hello, I'm Silvestrs, a Full-stack developer.</p>
+          <p class="text-white text-2xl">A developer with a passion for all things web and security. I started programming when i was 13 years old. I went to programming courses for a 2 years, and after that I went to technical school for 4 years with an internship in the last year. I'm currently learning about web security, binary exploitation, reverse engineering, and digital forensics.</p>
+        </div>
+      </div>
+    </div>
   </main>
 </Layout>
