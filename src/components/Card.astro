@@ -8,6 +8,10 @@ import { getAverageColor } from 'fast-average-color-node';
 import { readFile } from 'node:fs/promises';
 import path from "path";
 
+const base = import.meta.env.BASE_URL;
+
+picture = base + picture;
+
 // For public folder images, you might need to handle this differently
 // This approach works better with imported images
 // This fetches images during build-time
