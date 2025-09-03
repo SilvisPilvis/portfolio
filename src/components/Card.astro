@@ -29,51 +29,5 @@ const color = await getAverageColor(contents);
 <section style={`--dynamic-decoration-color: ${color.hex};`} class=`text-white flex flex-col items-center justify-center gap-2 bg-gray-900 rounded-md shadow-lg bg-opacity-80 m-4 hover:outline-4 outline-white hover:outline-dashed outline-offset-2`>
     <a href={link} class=`text-2xl font-bold text-center hover:underline hover:underline-offset-8 hover:decoration-4 decoration-[var(--dynamic-decoration-color)] py-2`>{title}</a>
     <Image src=`${base}${picture}` inferSize={true} width={72} height={72} loading={"lazy"} alt=`${title} Logo` class="min-w-18 min-h-18 max-w-18 max-h-18 rounded-md object-contain" />
-
-const base = import.meta.env.BASE_URL;
-
-// For public folder images, you might need to handle this differently
-// This approach works better with imported images
-// This fetches images during build-time
-// const icon = `http://localhost:4321`;
-
-// --- Needs to run on bun otherwise will fail. I.e. when building, cuz runs on browser.
-// Instead read image to buffer
-// Path to the icon
-// const path = `../../public${picture}`;
-// Read file to BunFile
-// const file = Bun.file(path);
-// Convert BunFile to ArrayBuffer
-// const arrbuf = await file.arrayBuffer();
-// Consume ArrayBuffer and convert to buffer
-// const buffer = Buffer.from(arrbuf);
-// const color = await getAverageColor(buffer);
-
-let contents;
-if (picture) {
-  try {
-    // const filePath = new URL('./package.json', import.meta.url);
-    // const contents = await readFile(filePath, { encoding: 'utf8' });
-    // const path = `public${picture}`;
-    // const filePath = new URL(path, import.meta.url);
-    // const filePath = path;
-    const rel = picture.startsWith('/') ? picture.slice(1) : picture;
-    const absolute = path.join(process.cwd(), 'public', rel);
-    console.log(`Reading: ${absolute}`);
-    contents = await readFile(absolute);
-  } catch (err) {
-    console.error(err.message);
-  }
-
-}
-
-const color = await getAverageColor(contents);
-// const color = await getAverageColor(icon);
-// console.log(`Color: ${color.hex}`);
----
-
-<section style={`--dynamic-decoration-color: ${color.hex};`} class=`text-white flex flex-col items-center justify-center gap-2 bg-gray-900 rounded-md shadow-lg bg-opacity-80 m-4 hover:outline-4 outline-white hover:outline-dashed outline-offset-2`>
-    <a href={link} class=`text-2xl font-bold text-center hover:underline hover:underline-offset-8 hover:decoration-4 decoration-[var(--dynamic-decoration-color)] `>{title}</a>
-    <Image src=`${base}${picture}` inferSize={true} width={72} height={72} alt="Technologies" class="min-w-18 min-h-18 max-w-18 max-h-18 rounded-md object-contain mt-2" />
     <p class="text-center p-4">{description}</p>
 </section>
