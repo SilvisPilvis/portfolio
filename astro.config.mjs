@@ -14,5 +14,7 @@ export default defineConfig({
   integrations: [starlight({
     title: 'My Portfolio',
     favicon: '/favicon.svg',
-  })]
+  })],
+  site: 'https://silvispilvis.github.io/portfolio/',
+  base: '/portfolio'
 });

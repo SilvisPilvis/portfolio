@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+
+// Fetch all books from the authors collection
+const schedule = await getCollection('schedule');
+
+import Layout from '../layouts/Layout.astro';
+const title = 'Schedule';
+
+// console.log(schedule);
+---
+
+<Layout title={title}>
+    <!-- <UnderConstruction /> -->
+    <main>
+
+    </main>
+</Layout>
