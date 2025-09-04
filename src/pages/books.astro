@@ -5,6 +5,8 @@ import { getCollection } from 'astro:content';
 // Fetch all books from the authors collection
 const allBooks = await getCollection('books');
 
+const base = import.meta.env.BASE_URL;
+
 import Layout from '../layouts/Layout.astro';
 const title = 'Books';
 ---
@@ -12,7 +14,7 @@ const title = 'Books';
 <script>
   // This runs in the browser
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
+    navigator.serviceWorker.register(`${base}sw.js`)
       .then(registration => console.log('SW registered:', registration))
       .catch(error => console.log('SW registration failed:', error));
   } else {
