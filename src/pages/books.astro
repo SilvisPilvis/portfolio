@@ -1,39 +1,39 @@
 ---
-const { title, picture, description, link} = Astro.props;
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 
-import { Image, getImage } from 'astro:assets';
-
-import { getAverageColor } from 'fast-average-color-node';
-
-import { readFile } from 'node:fs/promises';
-import path from "path";
+// Fetch all books from the authors collection
+const allBooks = await getCollection('books');
 
 const base = import.meta.env.BASE_URL;
 
-let contents: Buffer<ArrayBufferLike> = Buffer.alloc(0);
-if (picture) {
-  try {
-    const rel = picture.startsWith('/') ? picture.slice(1) : picture;
-    const absolute = path.join(process.cwd(), 'public', rel);
-    console.log(`Reading: ${absolute}`);
-    contents = await readFile(absolute);
-    
-    // Only process color if we have valid content
-    if (contents && contents.length > 0) {
-      color = await getAverageColor(contents);
-    } else {
-      console.warn(`Empty or invalid image file: ${absolute}`);
-    }
-  } catch (err: any) {
-    console.error(`Error reading image file: ${err.message}`);
-  }
-}
-
-const color = await getAverageColor(contents);
+import Layout from '../layouts/Layout.astro';
+const title = 'Books';
 ---
 
-<section style={`--dynamic-decoration-color: ${color.hex};`} class=`text-white flex flex-col items-center justify-center gap-2 bg-gray-900 rounded-md shadow-lg bg-opacity-80 m-4 hover:outline-4 outline-white hover:outline-dashed outline-offset-2`>
-    <a href={link} class=`text-2xl font-bold text-center hover:underline hover:underline-offset-8 hover:decoration-4 decoration-[var(--dynamic-decoration-color)] py-2`>{title}</a>
-    <Image src=`${base}${picture}` inferSize={true} width={72} height={72} loading={"lazy"} alt=`${title} Logo` class="min-w-18 min-h-18 max-w-18 max-h-18 rounded-md object-contain" />
-    <p class="text-center p-4">{description}</p>
-</section>
+<script>
+  // This runs in the browser
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => console.log('SW registered:', registration))
+      .catch(error => console.log('SW registration failed:', error));
+  } else {
+    console.log('Service workers are not supported');
+  }
+</script>
+
+<Layout title={title}>
+  <main>
+    <p class="text-center text-white text-2xl font-bold">Book Library</p>
+    <p class="pl-4 text-white text-xl">Showing {allBooks.length} books</p>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+      {allBooks.map((book) => (
+        <div class="p-4 bg-gray-900 rounded-md shadow-lg bg-opacity-80 m-4 hover:outline-4 outline-white hover:outline-dashed outline-offset-2 flex flex-col items-center justify-center">
+          <Image src={`https://covers.openlibrary.org/b/isbn/${book.data.isbn}-M.jpg`} alt={`Cover of ${book.data.title}`} inferSize={true} loading={"lazy"} class="rounded-md object-contain mt-2" />
+          <div class="text-center text-white p-4 text-xl font-bold">{book.data.title}</div>
+          <div class="text-white">by {book.data.author}</div>
+        </div>
+      ))}
+    </div>
+  </main>
+</Layout>
