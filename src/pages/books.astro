@@ -15,12 +15,18 @@ if (picture) {
   try {
     const rel = picture.startsWith('/') ? picture.slice(1) : picture;
     const absolute = path.join(process.cwd(), 'public', rel);
-    // console.log(`Reading: ${absolute}`);
+    console.log(`Reading: ${absolute}`);
     contents = await readFile(absolute);
+    
+    // Only process color if we have valid content
+    if (contents && contents.length > 0) {
+      color = await getAverageColor(contents);
+    } else {
+      console.warn(`Empty or invalid image file: ${absolute}`);
+    }
   } catch (err: any) {
-    console.error(err.message);
+    console.error(`Error reading image file: ${err.message}`);
   }
-
 }
 
 const color = await getAverageColor(contents);
