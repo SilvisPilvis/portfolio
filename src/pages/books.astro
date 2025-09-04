@@ -9,12 +9,13 @@ const base = import.meta.env.BASE_URL;
 
 import Layout from '../layouts/Layout.astro';
 const title = 'Books';
+let swPath = base + 'sw.js';
 ---
 
 <script>
   // This runs in the browser
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register(base + 'sw.js')
+    navigator.serviceWorker.register(swPath)
       .then(registration => console.log('SW registered:', registration))
       .catch(error => console.log('SW registration failed:', error));
   } else {
