@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content';
 // Fetch all books from the authors collection
 const allBooks = await getCollection('books');
 
-const base = import.meta.env.BASE_URL;
+// const base = import.meta.env.BASE_URL;
 
 import Layout from '../layouts/Layout.astro';
 const title = 'Books';
