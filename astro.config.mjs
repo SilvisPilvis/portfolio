@@ -5,16 +5,22 @@ import tailwindcss from '@tailwindcss/vite';
 
 import starlight from '@astrojs/starlight';
 
+import auth from 'auth-astro';
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
 
-  integrations: [starlight({
-    title: 'My Portfolio',
-    favicon: '/favicon.svg',
-  })],
   site: 'https://silvispilvis.github.io/portfolio/',
-  base: '/portfolio'
+  base: '/portfolio',
+
+  integrations: [starlight({
+    title: 'Various docs and notes about my projects',
+    favicon: '/favicon.svg',
+  }), 
+  auth()
+  ]
+
 });
