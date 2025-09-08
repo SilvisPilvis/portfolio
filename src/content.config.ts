@@ -1,6 +1,8 @@
 import { defineCollection } from 'astro:content';
 import { file } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { docsLoader } from '@astrojs/starlight/loaders';
+import { docsSchema } from '@astrojs/starlight/schema';
 
 const books = defineCollection({
     /* Retrieve all book entries from a JSON file. */
@@ -34,6 +36,8 @@ const schedule = defineCollection({
       weekend: z.boolean(),
     })
     )
-    });
+  });
 
-export const collections = { books, schedule };
+const docs = defineCollection({ loader: docsLoader(), schema: docsSchema() })
+
+export const collections = { books, schedule, docs };
