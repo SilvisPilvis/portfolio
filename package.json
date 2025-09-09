@@ -10,11 +10,11 @@
   },
   "dependencies": {
     "@astrojs/starlight": "^0.35.2",
-    "@auth/core": "^0.37.4",
-    "@tailwindcss/vite": "^4.1.11",
-    "astro": "5.13.3",
+    "@auth/core": "^0.40.0",
+    "@tailwindcss/vite": "^4.1.13",
+    "astro": "5.13.6",
     "auth-astro": "^4.2.0",
     "fast-average-color-node": "^3.1.0",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.13"
   }
 }

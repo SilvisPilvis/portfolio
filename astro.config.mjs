@@ -10,17 +10,18 @@ import auth from 'auth-astro';
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss(), auth()],
   },
 
   site: 'https://silvispilvis.github.io/portfolio/',
   base: '/portfolio',
 
-  integrations: [starlight({
-    title: 'Various docs and notes about my projects',
-    favicon: '/favicon.svg',
-  }), 
-  auth()
-  ]
+  integrations: [
+    starlight({
+      title: 'Various docs and notes about my projects',
+      favicon: '/favicon.svg',
+    }),
+  ],
+
 
 });
