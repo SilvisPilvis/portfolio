@@ -30,7 +30,7 @@ type Activity struct {
 	Pay          *float32  `json:"pay,omitempty"`
 }
 
-var HOURLY_RATE float32 = 7.33
+var HOURLY_RATE float32 = 5.0
 
 func main() {
 	activities := []string{
