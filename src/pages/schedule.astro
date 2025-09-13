@@ -7,12 +7,31 @@ const schedule = await getCollection('schedule');
 import Layout from '../layouts/Layout.astro';
 const title = 'Schedule';
 
+function getDaysInMonth(year, month) {
+  return new Date(year, month, 0).getDate();
+}
+
+function getDaySchedule(id) {
+    return schedule.filter(schedule => schedule.id == id) ? [];
+}
+
+const date = new Date();
+const currentYear = date.getFullYear();
+const currentMonth = date.getMonth() + 1;
+
+const days = getDaysInMonth(
+  currentYear,
+  currentMonth,
+);
+
 // console.log(schedule);
 ---
 
 <Layout title={title}>
     <!-- <UnderConstruction /> -->
     <main>
-
+        {days.map((data) =>
+        <div></div>
+        )}
     </main>
 </Layout>
