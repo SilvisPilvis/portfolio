@@ -32,6 +32,8 @@ const daysArray = Array.from({length: days}, (_, i) => i + 1);
 <Layout title={title}>
     <!-- <UnderConstruction /> -->
     <main>
+        <p>Showing schedule for : {currentMonth}/{currentYear}</p>
+        <p>Total work days: {schedule.length}</p>
         {daysArray.map((data) => (
         <div></div>
         ))}
