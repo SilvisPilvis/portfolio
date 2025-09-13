@@ -36,6 +36,7 @@ const daysArray = Array.from({length: days}, (_, i) => i + 1);
         <p>Total work days: {schedule.length}</p>
         {daysArray.map((data) => (
         <div>{data.id}</div>
+        <div>{Object.keys(data)}</div>
         ))}
     </main>
 </Layout>
