@@ -26,14 +26,14 @@ const days = getDaysInMonth(
 
 const daysArray = Array.from({length: days}, (_, i) => i + 1);
 
-// console.log(schedule);
+console.log(schedule);
 ---
 
 <Layout title={title}>
     <!-- <UnderConstruction /> -->
     <main>
         <p>Showing schedule for : {currentMonth}/{currentYear}</p>
-        <p>Total work days: {schedule.schedule.length}</p>
+        <p>Total work days: {schedule.length}</p>
         {daysArray.map((data) => (
         <div></div>
         ))}
