@@ -24,13 +24,15 @@ const days = getDaysInMonth(
   currentMonth,
 );
 
+const daysArray = Array.from({length: days}, (_, i) => i + 1);
+
 // console.log(schedule);
 ---
 
 <Layout title={title}>
     <!-- <UnderConstruction /> -->
     <main>
-        {days.map((data) => (
+        {daysArray.map((data) => (
         <div></div>
         ))}
     </main>
