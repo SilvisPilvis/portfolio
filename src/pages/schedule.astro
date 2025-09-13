@@ -35,7 +35,8 @@ const daysArray = Array.from({length: days}, (_, i) => i + 1);
         <p>Showing schedule for : {currentMonth}/{currentYear}</p>
         <p>Total work days: {schedule.length}</p>
         {daysArray.map((data) => (
-        <div>{data.id}</div>
+        <div>{data}</div>
+        <div>{data.days}</div>
         <div>{Object.keys(data)}</div>
         ))}
     </main>
